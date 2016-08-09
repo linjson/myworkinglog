@@ -255,6 +255,9 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
 		let p = self.projectData[listview.selectedRow]
 		self.selectPid = p.id;
 		refreshWorkingLogData();
+
+		NSNotificationCenter.defaultCenter().postNotificationName(NOTIFY_DATACHANGE_CHANGEPROJECTSELECT, object: NSNumber.init(longLong: p.id));
+
 	}
 
 	/// 可接收drag

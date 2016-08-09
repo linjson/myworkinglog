@@ -21,10 +21,19 @@ class WorkinglogDetailController: NSViewController, NSComboBoxDataSource {
 	var projectData: [Project]!;
 	var working: WorkingLog!;
 	var command = "add";
+	var selectProjectId: Int64!;
 	override func viewDidLoad() {
-
 		resetField();
+		registerNotifiction();
 	}
+
+	func registerNotifiction() {
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(changeProject), name: NOTIFY_DATACHANGE_CHANGEPROJECTSELECT, object: nil);
+	}
+//
+//	func unRegisterNotifiction() {
+//		NSNotificationCenter.defaultCenter().removeObserver(self, name: NOTIFY_DATACHANGE_CHANGEPROJECTSELECT, object: nil);
+//	}
 
 	func bindPUProjectData() {
 		projectData = dbHelper.project.findAll(false);
@@ -42,6 +51,7 @@ class WorkinglogDetailController: NSViewController, NSComboBoxDataSource {
 			bindData();
 			command = "modify";
 		} else {
+			selectProject(selectProjectId);
 			command = "add";
 		}
 	}
@@ -77,6 +87,7 @@ class WorkinglogDetailController: NSViewController, NSComboBoxDataSource {
 		}
 
 	}
+
 	@IBAction func doCancal(sender: AnyObject) {
 		closeWindow();
 	}
@@ -102,6 +113,21 @@ class WorkinglogDetailController: NSViewController, NSComboBoxDataSource {
 		}
 	}
 
+	func changeProject(notify: NSNotification) {
+		guard let id = notify.object else { return; }
+		self.selectProjectId = Int64(id.integerValue);
+	}
+
+	func selectProject(id: Int64) {
+		let i = projectData.indexOf({ p -> Bool in p.id == id });
+		var index = 0;
+		if i != nil {
+			index = i!;
+		}
+
+		self.puProject.selectItemAtIndex(index);
+	}
+
 	func validateData() -> Bool {
 
 		if (txtContent.string == "") {
@@ -124,12 +150,7 @@ class WorkinglogDetailController: NSViewController, NSComboBoxDataSource {
 	}
 
 	func bindData() {
-		let i = projectData.indexOf({ p -> Bool in p.id == working.pid });
-		var index = 0;
-		if i != nil {
-			index = i!;
-		}
-		puProject.selectItemAtIndex(index);
+		selectProject(working.pid);
 		txtLength.objectValue = working.workTime;
 		txtContent.string = working.content;
 		dpDate.dateValue = (dpDate.formatter as! NSDateFormatter).dateFromString(working.createTime)!;
