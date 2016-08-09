@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "ViewController.outlineView(NSOutlineView, viewForTableColumn : NSTableColumn?, item : AnyObject) -&gt; NSView?:ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "tableColumn?.identifier">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "PopAlert.showWindow(AnyObject?) -&gt; ():PopAlert.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "NSBundle.mainBundle().pathForImageResource(&quot;logo&quot;)">
+            </PersistentString>
+            <PersistentString
+               value = "iconName">
+            </PersistentString>
+            <PersistentString
+               value = "image.extent">
+            </PersistentString>
+            <PersistentString
+               value = " NSBundle.mainBundle().pathForImageResource(&quot;logo&quot;)">
+            </PersistentString>
+            <PersistentString
+               value = "iconView">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "WindowController.showPopAlert(NSNotification) -&gt; ():WindowController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Int64(notify.object)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.outlineView(NSOutlineView, objectValueForTableColumn : NSTableColumn?, byItem : AnyObject?) -&gt; AnyObject?:ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "view.textField?">
+            </PersistentString>
+            <PersistentString
+               value = "view.textField">
+            </PersistentString>
+            <PersistentString
+               value = "tableColumn?.dataCell">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "PopAlertWindow.backImage() -&gt; ():PopAlert.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "result.extent">
+            </PersistentString>
+            <PersistentString
+               value = "NSGraphicsContext.currentContext()?.CGContext">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "PopAlert.bindAnimateEvent() -&gt; ():PopAlert.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.window">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "WorkinglogDetailController.viewDidLoad() -&gt; ():WorkinglogDetailController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "working">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.outlineView(NSOutlineView, shouldSelectItem : AnyObject) -&gt; Bool:ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "item.view?">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MyWorkingLogTests.testDB() -&gt; ():MyWorkingLogTests.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "i.values">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "WindowController.test(AnyObject) -&gt; ():WindowController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "a.window">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "WorkinglogDetailController.doAdd(AnyObject) -&gt; ():WorkinglogDetailController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "txtLength.formatter">
+            </PersistentString>
+            <PersistentString
+               value = "dpDate.objectValue">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.tableViewColumnDidResize(NSNotification) -&gt; ():ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "colContentWidth">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "static PopAlert.create(NSWindow?, with : PopAlertType) -&gt; ():PopAlert.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "pop.iconView">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "WorkingLog.(createDBFile in _5DBA35A0CBA26781C753C7F3BA39C965)() -&gt; ():WorkingLog.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "fileManger.fileExistsAtPath(DBPath)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Table.create(temporary : Bool, ifNotExists : Bool, block : (TableBuilder) -&gt; ()) -&gt; String:Schema.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Table.identifier">
+            </PersistentString>
+            <PersistentString
+               value = "tableName()">
+            </PersistentString>
+            <PersistentString
+               value = "clauses">
+            </PersistentString>
+            <PersistentString
+               value = "$0">
+            </PersistentString>
+            <PersistentString
+               value = "builder.definitions">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "WorkinglogDetailController.closeWindow() -&gt; ():WorkinglogDetailController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.view.window?.parentWindow">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.viewDidLoad() -&gt; ():ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.view.superview">
+            </PersistentString>
+            <PersistentString
+               value = "self">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "PopAlertWindow.init(contentRect : CGRect, styleMask : Int, backing : NSBackingStoreType, defer : Bool) -&gt; PopAlertWindow:PopAlert.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "view?.layer">
+            </PersistentString>
+            <PersistentString
+               value = "view?.layer?.backgroundColor">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "static PopAlert.c() -&gt; PopAlert:PopAlert.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "pop.window">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Properties.dbPath.getter:Properties.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "path">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.outlineView(NSOutlineView, numberOfChildrenOfItem : AnyObject?) -&gt; Int:ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "projectData">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ProjectTable.(findAllCount() -&gt; ()).(closure #1):ProjectTable.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Int64(String(i[0]!))!">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.tableView(NSTableView, heightOfRow : Int) -&gt; CGFloat:ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "colContentWidth">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ProjectManagerViewController.viewDidLoad() -&gt; ():ProjectManagerViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "projectData">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "NSImage.imageTintedWithColor(NSColor) -&gt; NSImage?:NSImageEx.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "NSGraphicsContext.currentContext()?.graphicsPort">
+            </PersistentString>
+            <PersistentString
+               value = "NSGraphicsContext.currentContext()?.graphicsPort as? CGContextRef">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "PopAlert.init(window : NSWindow?) -&gt; PopAlert:PopAlert.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "window">
+            </PersistentString>
+            <PersistentString
+               value = "self">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "PopAlert.windowWillLoad() -&gt; ():PopAlert.swift">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
