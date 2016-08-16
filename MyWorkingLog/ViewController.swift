@@ -103,10 +103,19 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
 
 		// copy
 		if (NSEvent.modifierFlags() == NSEventModifierFlags.CommandKeyMask && theEvent.keyCode == 8) {
-			let c = workingLogData[tableview.selectedRow].content;
+			let c = copySelectContent();
 			self.writeToPasteboard(c) ;
 			NSNotificationCenter.defaultCenter().postNotificationName(NOTIFY_POPALERT, object: PopAlertType.Copy.rawValue);
 		}
+	}
+
+	func copySelectContent() -> String {
+		var content = "";
+		self.tableview.selectedRowIndexes.enumerateIndexesUsingBlock({ (a, b) -> Void in
+			let c = self.workingLogData[a].content;
+			content += c + "\n";
+		})
+		return content;
 	}
 
 	func writeToPasteboard(text: String) {

@@ -728,8 +728,8 @@
                             <defaultToolbarItems>
                                 <toolbarItem reference="std-ZL-Cor"/>
                                 <toolbarItem reference="ukG-BP-zNT"/>
-                                <toolbarItem reference="bVB-tJ-HX1"/>
                                 <toolbarItem reference="zhv-i1-rUq"/>
+                                <toolbarItem reference="bVB-tJ-HX1"/>
                             </defaultToolbarItems>
                         </toolbar>
                     </window>
