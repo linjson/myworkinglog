@@ -79,9 +79,9 @@ public class WorkingLogTable {
 		return ERROR;
 	}
 
-	func updateWorkingLog(id: Int64, pid: Int64, content: String, workTime: Double, workType: String) -> Int {
+	func updateWorkingLog(id: Int64, pid: Int64, content: String, workTime: Double, workType: String, createTime: String) -> Int {
 		do {
-			return try db.run(table.filter(self.id == id).update(self.content <- content, self.workTime <- workTime, self.workType <- workType, self.pid <- pid));
+			return try db.run(table.filter(self.id == id).update(self.content <- content, self.workTime <- workTime, self.workType <- workType, self.pid <- pid, self.createTime <- createTime));
 		} catch {
 			log(error);
 		}
@@ -89,7 +89,7 @@ public class WorkingLogTable {
 	}
 
 	func updateWorkingLog(modal working: WorkingLog) -> Int {
-		return updateWorkingLog(working.id, pid: working.pid, content: working.content, workTime: working.workTime, workType: working.workType)
+		return updateWorkingLog(working.id, pid: working.pid, content: working.content, workTime: working.workTime, workType: working.workType, createTime: working.createTime);
 	}
 
 	func moveWorkingLog(id: [Int64], pid: Int64) -> Int {
