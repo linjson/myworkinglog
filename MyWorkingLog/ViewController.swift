@@ -102,7 +102,7 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
 		}
 
 		// copy
-		if (NSEvent.modifierFlags() == NSEventModifierFlags.CommandKeyMask && theEvent.keyCode == 8) {
+		if ((NSEvent.modifierFlags() == NSEventModifierFlags.CommandKeyMask) && (theEvent.keyCode == 8)) {
 			let c = copySelectContent();
 			self.writeToPasteboard(c) ;
 			NSNotificationCenter.defaultCenter().postNotificationName(NOTIFY_POPALERT, object: PopAlertType.Copy.rawValue);
