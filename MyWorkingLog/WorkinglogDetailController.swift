@@ -51,7 +51,11 @@ class WorkinglogDetailController: NSViewController, NSComboBoxDataSource {
 			bindData();
 			command = "modify";
 		} else {
-			selectProject(selectProjectId);
+			var pid: Int64 = 0;
+			if (selectProjectId != nil) {
+				pid = selectProjectId;
+			}
+			selectProject(pid);
 			command = "add";
 		}
 	}

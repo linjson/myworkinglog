@@ -123,6 +123,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "WorkinglogDetailController.viewWillAppear() -&gt; ():WorkinglogDetailController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "selectProjectId">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "static PopAlert.create(NSWindow?, with : PopAlertType) -&gt; ():PopAlert.swift">
          <PersistentStrings>
             <PersistentString
@@ -170,10 +178,10 @@
          contextName = "ViewController.viewDidLoad() -&gt; ():ViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "self.view.superview">
+               value = "self">
             </PersistentString>
             <PersistentString
-               value = "self">
+               value = "self.view.superview">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

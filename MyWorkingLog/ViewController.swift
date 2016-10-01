@@ -110,12 +110,12 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
 	}
 
 	func copySelectContent() -> String {
-		var content = "";
+		var list: [String] = [];
 		self.tableview.selectedRowIndexes.enumerateIndexesUsingBlock({ (a, b) -> Void in
 			let c = self.workingLogData[a].content;
-			content += c + "\n";
+			list.append(c);
 		})
-		return content;
+		return list.joinWithSeparator("\n");
 	}
 
 	func writeToPasteboard(text: String) {
