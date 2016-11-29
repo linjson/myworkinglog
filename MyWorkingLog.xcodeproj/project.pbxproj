@@ -73,6 +73,7 @@
 		623BAF461D10EC7D00474B52 /* ProjectTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTable.swift; sourceTree = "<group>"; };
 		624521191D518C12007188DA /* PopAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopAlert.swift; sourceTree = "<group>"; };
 		6245211B1D518CBF007188DA /* PopAlert.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopAlert.xib; sourceTree = "<group>"; };
+		624EF5DB1DED257D0090C816 /* SQLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SQLite.framework; path = "../../../../Users/ljs/Library/Developer/Xcode/DerivedData/MyWorkingLog-ghqiuxpwekxegfgjxolnnechkdcr/Build/Products/Debug/SQLite.swift/SQLite.framework"; sourceTree = "<group>"; };
 		6281909F1D42197000267E73 /* DeleteCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteCellView.swift; sourceTree = "<group>"; };
 		628267011D5855B800320147 /* DataBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBaseViewController.swift; sourceTree = "<group>"; };
 		628267061D5859E900320147 /* properties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = properties.plist; sourceTree = "<group>"; };
@@ -262,6 +263,7 @@
 		73C4EB5E0E197B68D3A88216 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				624EF5DB1DED257D0090C816 /* SQLite.framework */,
 				628267131D5871C000320147 /* Automator.framework */,
 				628267111D58716200320147 /* AppleScriptKit.framework */,
 				6282670F1D58715100320147 /* ApplicationServices.framework */,

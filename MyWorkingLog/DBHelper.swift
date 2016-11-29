@@ -52,8 +52,8 @@ open class DBHelper {
 	}
 
 	open func deleteAll() {
-		self.project.deleteAll();
-		self.workinglog.deleteAll();
+		_=self.project.deleteAll();
+		_=self.workinglog.deleteAll();
 	}
 
 }

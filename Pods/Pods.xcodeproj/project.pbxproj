@@ -41,7 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		01835A42CF48389C735F2F4E58708F1B /* PBXContainerItemProxy */ = {
+		624EF5D91DED23E70090C816 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
@@ -63,18 +63,18 @@
 		06FD433869DAFB6771DB8C95D5D09149 /* Pods-MyWorkingLogTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MyWorkingLogTests-frameworks.sh"; sourceTree = "<group>"; };
 		178057F5C43F2ACC4C49848D76C84F39 /* FTS5.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FTS5.swift; path = SQLite/Extensions/FTS5.swift; sourceTree = "<group>"; };
 		19E98AA8FBEBF8957FDB3434B04A5D0E /* AggregateFunctions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AggregateFunctions.swift; path = SQLite/Typed/AggregateFunctions.swift; sourceTree = "<group>"; };
-		1D7DA9FB08FD2A913967F0D7996B8701 /* SQLite.swift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SQLite.swift.modulemap; sourceTree = "<group>"; };
+		1D7DA9FB08FD2A913967F0D7996B8701 /* SQLite.swift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SQLite.swift.modulemap; sourceTree = "<group>"; };
 		1EC3C1E6C3B57B46326B94BAB568B649 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23EE883AEF75DDCE315139B1712AE7E4 /* fts3_tokenizer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = fts3_tokenizer.h; path = SQLite/Core/fts3_tokenizer.h; sourceTree = "<group>"; };
 		266844878F19EAB4387099A76849ECD3 /* Blob.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Blob.swift; path = SQLite/Core/Blob.swift; sourceTree = "<group>"; };
 		270DD1219F1E6CF00379D39F252D87C6 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		27B2D491F0A9B062233011B873DC118C /* SQLite.swift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SQLite.swift-umbrella.h"; sourceTree = "<group>"; };
-		2AABCE166359CCAE28FF3C62A11518C8 /* Pods_MyWorkingLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MyWorkingLog.framework; path = "Pods-MyWorkingLog.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2AABCE166359CCAE28FF3C62A11518C8 /* Pods_MyWorkingLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyWorkingLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D30459F9DC30876AF6C299D26C7CE48 /* SQLite.swift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SQLite.swift-dummy.m"; sourceTree = "<group>"; };
 		3D630909FC3716CAC500B775CB317BD5 /* Query.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Query.swift; path = SQLite/Typed/Query.swift; sourceTree = "<group>"; };
 		4290E5E4E6E470B73A03DC68DD88CD9E /* Schema.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Schema.swift; path = SQLite/Typed/Schema.swift; sourceTree = "<group>"; };
 		46AF80A3BCC8E603CB38520A0A9B2579 /* Pods-MyWorkingLog-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MyWorkingLog-dummy.m"; sourceTree = "<group>"; };
-		563E51488F8D4B40DD4102A39507226D /* Pods-MyWorkingLogTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-MyWorkingLogTests.modulemap"; sourceTree = "<group>"; };
+		563E51488F8D4B40DD4102A39507226D /* Pods-MyWorkingLogTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-MyWorkingLogTests.modulemap"; sourceTree = "<group>"; };
 		5676860A27E6C9DC8EA421DADC80EF57 /* Pods-MyWorkingLogTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MyWorkingLogTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		5877400A26C6F6005973A3F86FE5F0DB /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5BC33599DB3DDABF13B938ECF298EEDD /* Pods-MyWorkingLog-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MyWorkingLog-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -89,7 +89,7 @@
 		874DE57D889775E450F967975025117A /* Value.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Value.swift; path = SQLite/Core/Value.swift; sourceTree = "<group>"; };
 		88BFCDC2C48A9AAC024D78C7786357F9 /* SQLite.swift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SQLite.swift.xcconfig; sourceTree = "<group>"; };
 		8D61F104B2A04BA2AA576FDB702F2251 /* Pods-MyWorkingLogTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MyWorkingLogTests-umbrella.h"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A176B30827283BE898436493344C30D3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A491F83BBA6B1FECC25F7CE126C2AF62 /* Pods-MyWorkingLog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MyWorkingLog.debug.xcconfig"; sourceTree = "<group>"; };
 		AC32DD8855E7E50DAFB77C681228C3DC /* SQLite-Bridging.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SQLite-Bridging.h"; path = "SQLite/Core/SQLite-Bridging.h"; sourceTree = "<group>"; };
@@ -100,14 +100,14 @@
 		C73679C1F897100C8A7D8F6F95068EB5 /* SQLite-Bridging.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "SQLite-Bridging.m"; path = "SQLite/Core/SQLite-Bridging.m"; sourceTree = "<group>"; };
 		CA3ED8D54211455DE25A4DA036694445 /* SQLite.swift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SQLite.swift-prefix.pch"; sourceTree = "<group>"; };
 		D19B73C3D296759C078BC0CAB2C45690 /* Pods-MyWorkingLog-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MyWorkingLog-frameworks.sh"; sourceTree = "<group>"; };
-		D83043001A6D1082260EB13C8ECBF276 /* Pods-MyWorkingLog.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-MyWorkingLog.modulemap"; sourceTree = "<group>"; };
+		D83043001A6D1082260EB13C8ECBF276 /* Pods-MyWorkingLog.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-MyWorkingLog.modulemap"; sourceTree = "<group>"; };
 		DBFD2DE6EA73BC915D8AC0BB086D8B5F /* Pods-MyWorkingLogTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MyWorkingLogTests.debug.xcconfig"; sourceTree = "<group>"; };
-		DF49BEDCA6F74AA1C63899AB17E69CDA /* SQLite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SQLite.framework; path = SQLite.swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF49BEDCA6F74AA1C63899AB17E69CDA /* SQLite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SQLite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6AB02C040F88EE8B092BA2791D76F80 /* Pods-MyWorkingLogTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MyWorkingLogTests-dummy.m"; sourceTree = "<group>"; };
 		E70F7947B1A17BEEBA7893AC71D79ED2 /* Pods-MyWorkingLog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MyWorkingLog.release.xcconfig"; sourceTree = "<group>"; };
 		E8083AC04868D927E90A32115E3A15B8 /* RTree.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RTree.swift; path = SQLite/Extensions/RTree.swift; sourceTree = "<group>"; };
 		EA98ACB1CD546E2ECEA1AC833E86B078 /* Operators.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Operators.swift; path = SQLite/Typed/Operators.swift; sourceTree = "<group>"; };
-		F30618EFFB09DEAC0CF6707B672CB73E /* Pods_MyWorkingLogTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MyWorkingLogTests.framework; path = "Pods-MyWorkingLogTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F30618EFFB09DEAC0CF6707B672CB73E /* Pods_MyWorkingLogTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyWorkingLogTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5AEDDB16A108F8A5678B834709F6C54 /* CustomFunctions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CustomFunctions.swift; path = SQLite/Typed/CustomFunctions.swift; sourceTree = "<group>"; };
 		F6B209C9F47809E903AE723BA3DE02E5 /* Pods-MyWorkingLogTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MyWorkingLogTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		FECF1DDA6B0BD2DD467D808A60E9F1DF /* Expression.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Expression.swift; path = SQLite/Typed/Expression.swift; sourceTree = "<group>"; };
@@ -224,7 +224,6 @@
 				63FF7C686861C090B590243E3B3E4BA0 /* standard */,
 				0CE5F9160B067C829D364E72878D0583 /* Support Files */,
 			);
-			name = SQLite.swift;
 			path = SQLite.swift;
 			sourceTree = "<group>";
 		};
@@ -345,7 +344,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				064CE706685BB6A56E2123343E39085E /* PBXTargetDependency */,
+				624EF5DA1DED23E70090C816 /* PBXTargetDependency */,
 			);
 			name = "Pods-MyWorkingLogTests";
 			productName = "Pods-MyWorkingLogTests";
@@ -445,11 +444,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		064CE706685BB6A56E2123343E39085E /* PBXTargetDependency */ = {
+		624EF5DA1DED23E70090C816 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = SQLite.swift;
 			target = 0E10EF571C19F73ED59A9ED6ED92482A /* SQLite.swift */;
-			targetProxy = 01835A42CF48389C735F2F4E58708F1B /* PBXContainerItemProxy */;
+			targetProxy = 624EF5D91DED23E70090C816 /* PBXContainerItemProxy */;
 		};
 		C6B5ED91D18FA5B587A8B938BD7D2E97 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

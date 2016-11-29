@@ -283,7 +283,7 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
 		guard let project = item as? Project else {
 			return false;
 		}
-		dbHelper.workinglog.moveWorkingLog(self.selectWorking, pid: project.id);
+        _=dbHelper.workinglog.moveWorkingLog(self.selectWorking, pid: project.id);
 		refreshWorkingLogData();
 		return true;
 	}

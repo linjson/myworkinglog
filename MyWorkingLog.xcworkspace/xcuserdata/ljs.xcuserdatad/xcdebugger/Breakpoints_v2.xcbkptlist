@@ -9,94 +9,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MyWorkingLog/WorkingLogTable.swift"
-            timestampString = "502080330.896076"
+            filePath = "MyWorkingLog/ViewController.swift"
+            timestampString = "502080962.878888"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "11"
-            endingLineNumber = "11"
-            landmarkName = "addWorkingLog(_:content:createTime:workTime:workType:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MyWorkingLog.WorkingLogTable.__deallocating_deinit"
-                  moduleName = "MyWorkingLog"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/project/github/myworkinglog/MyWorkingLog/WorkingLogTable.swift"
-                  timestampString = "502080342.088065"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "4">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MyWorkingLog.WorkingLogTable.deinit"
-                  moduleName = "MyWorkingLog"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/project/github/myworkinglog/MyWorkingLog/WorkingLogTable.swift"
-                  timestampString = "502080342.089381"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "4">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MyWorkingLog/WorkingLogTable.swift"
-            timestampString = "502080330.896076"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "11"
-            endingLineNumber = "11"
-            landmarkName = "updateWorkingLog(_:pid:content:workTime:workType:createTime:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MyWorkingLog.WorkingLogTable.__deallocating_deinit"
-                  moduleName = "MyWorkingLog"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/project/github/myworkinglog/MyWorkingLog/WorkingLogTable.swift"
-                  timestampString = "502080342.09221"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "4">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MyWorkingLog.WorkingLogTable.deinit"
-                  moduleName = "MyWorkingLog"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/project/github/myworkinglog/MyWorkingLog/WorkingLogTable.swift"
-                  timestampString = "502080342.093508"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "4">
-               </Location>
-            </Locations>
+            startingLineNumber = "286"
+            endingLineNumber = "286"
+            landmarkName = "outlineView(_:acceptDrop:item:childIndex:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

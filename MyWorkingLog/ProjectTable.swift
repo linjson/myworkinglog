@@ -100,8 +100,8 @@ open class ProjectTable {
 		do {
 
 			try db.transaction {
-				try self.db.run(self.table.filter(self.id == id).delete())
-				self.workingLog.deleteByPid(id);
+				_=try self.db.run(self.table.filter(self.id == id).delete())
+				_=self.workingLog.deleteByPid(id);
 			}
 			return 1;
 		} catch let e {
@@ -140,4 +140,5 @@ open class ProjectTable {
 		return ERROR;
 	}
 
+    
 }
