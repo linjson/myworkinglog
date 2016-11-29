@@ -10,11 +10,11 @@ import Cocoa
 
 class PopAlertWindow: NSWindow {
 
-	override init(contentRect: NSRect, styleMask aStyle: Int, backing bufferingType: NSBackingStoreType, defer flag: Bool) {
+	override init(contentRect: NSRect, styleMask aStyle: NSWindowStyleMask, backing bufferingType: NSBackingStoreType, defer flag: Bool) {
 		super.init(contentRect: contentRect, styleMask: aStyle, backing: bufferingType, defer: flag);
 		self.styleMask = NSBorderlessWindowMask;
-		self.opaque = false;
-		self.backgroundColor = NSColor.clearColor();
+		self.isOpaque = false;
+		self.backgroundColor = NSColor.clear;
 	}
 
 	override func layoutIfNeeded() {
@@ -23,26 +23,26 @@ class PopAlertWindow: NSWindow {
 		view?.wantsLayer = true;
 //		view?.layer?.backgroundColor = NSColor.init(red: 1, green: 1, blue: 1, alpha: 0.5).CGColor;
 		view?.layer?.borderWidth = 1;
-		view?.layer?.borderColor = NSColor.init(red: 0.95, green: 0.95, blue: 0.95, alpha: 1.00).CGColor;
+		view?.layer?.borderColor = NSColor.init(red: 0.95, green: 0.95, blue: 0.95, alpha: 1.00).cgColor;
 		view?.layer?.cornerRadius = 10;
 		view?.layer?.masksToBounds = true;
 
 	}
 
-	required init?(coder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
-	}
-
-	override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
-		log("window");
-	}
+//	required init?(coder: NSCoder) {
+//		fatalError("init(coder:) has not been implemented")
+//	}
+//
+//	override func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+//		log("window");
+//	}
 }
 
 enum PopAlertType: Int {
-	case Info = 0
-	case Success
-	case Error
-	case Copy
+	case info = 0
+	case success
+	case error
+	case copy
 }
 
 class PopAlert: NSWindowController, NSAnimationDelegate {
@@ -51,7 +51,7 @@ class PopAlert: NSWindowController, NSAnimationDelegate {
 	@IBOutlet weak var iconView: NSImageView!
 	var iconName: String!;
 	static var pop: PopAlert!;
-	var dismissTimer: NSTimer!;
+	var dismissTimer: Timer!;
 
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
@@ -69,30 +69,30 @@ class PopAlert: NSWindowController, NSAnimationDelegate {
 
 	}
 
-	static func create(window: NSWindow?, with type: PopAlertType = .Info) {
+	static func create(_ window: NSWindow?, with type: PopAlertType = .info) {
 		if (pop == nil) {
 			pop = PopAlert();
 		}
 		pop.setIconView(type);
 
-		if (pop.window?.parentWindow == nil) {
-			pop.window?.parentWindow?.removeChildWindow(pop.window!);
+		if (pop.window?.parent == nil) {
+			pop.window?.parent?.removeChildWindow(pop.window!);
 		}
 
-		window?.addChildWindow(pop.window!, ordered: .Above);
+		window?.addChildWindow(pop.window!, ordered: .above);
 		pop.showWindow(window);
 	}
 
-	func setIconView(type: PopAlertType) {
+	func setIconView(_ type: PopAlertType) {
 		var name = "";
 		switch type {
-		case .Success:
+		case .success:
 			name = "success";
-		case .Error:
+		case .error:
 			name = "fail";
-		case .Info:
+		case .info:
 			name = "info"
-		case .Copy:
+		case .copy:
 			name = "copy";
 		}
 
@@ -102,7 +102,7 @@ class PopAlert: NSWindowController, NSAnimationDelegate {
 	}
 
 	func updateWindowPosition() {
-		guard let parentWin = self.window?.parentWindow else {
+		guard let parentWin = self.window?.parent else {
 			return;
 		}
 
@@ -115,7 +115,7 @@ class PopAlert: NSWindowController, NSAnimationDelegate {
 
 	}
 
-	override func showWindow(sender: AnyObject?) {
+	override func showWindow(_ sender: Any?) {
 
 		self.window?.alphaValue = 0;
 		iconView.image = NSImage.init(named: iconName);
@@ -136,11 +136,11 @@ class PopAlert: NSWindowController, NSAnimationDelegate {
 		}
 //        dismissTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(dismiss:) userInfo:nil repeats:NO];
 
-		dismissTimer = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(dismiss), userInfo: nil, repeats: false);
+		dismissTimer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(dismiss), userInfo: nil, repeats: false);
 
 	}
 
-	func dismiss(sender: AnyObject?) {
+	func dismiss(_ sender: AnyObject?) {
 		self.window?.animator().alphaValue = 0;
 	}
 
@@ -158,9 +158,9 @@ class PopAlert: NSWindowController, NSAnimationDelegate {
 		let context = CIContext(options: nil);
 		let image = CIImage.init(color: CIColor.init(red: 1, green: 1, blue: 1, alpha: 0.8));
 
-		let newImage = context.createCGImage(image, fromRect: backgroundView.frame);
+		let newImage = context.createCGImage(image, from: backgroundView.frame);
 
-		backgroundView.image = NSImage.init(CGImage: newImage, size: size);
+		backgroundView.image = NSImage.init(cgImage: newImage!, size: size);
 	}
 
 }

@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import SQLite
+
 @testable import MyWorkingLog
 
 class MyWorkingLogTests: XCTestCase {
@@ -31,7 +31,7 @@ class MyWorkingLogTests: XCTestCase {
 
 	func testPerformanceExample() {
 		// This is an example of a performance test case.
-		self.measureBlock {
+		self.measure {
 			// Put the code you want to measure the time of here.
 		}
 	}
@@ -85,22 +85,22 @@ class MyWorkingLogTests: XCTestCase {
 	func testAddData() {
 		let db = DBHelper();
 		db.deleteAll();
-		let date = NSDate.init();
+		let date = Date.init();
 
-		let format = NSDateFormatter.init();
+		let format = DateFormatter.init();
 		format.dateFormat = "yyyy-MM-dd HH:mm:ss";
 
-		let dateString = format.stringFromDate(date);
+		let dateString = format.string(from: date);
 
 		for i in 0...2 {
 			let name = "pro";
-			let n = name.stringByAppendingString(String(i));
+			let n = name + String(i);
 			guard let pid = db.project?.addProject(n, time: dateString) else {
 				continue;
 			}
 			if (Int(pid) != ERROR) {
 				for x in 0...10 {
-					let content = n.stringByAppendingString("-item" + String(x))
+					let content = n + ("-item" + String(x))
 					let s = 2.4;
 
 					db.workinglog?.addWorkingLog(pid, content: content, createTime: dateString, workTime: s, workType: "其他");

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Project: NSObject {
+open class Project: NSObject {
 	var id: Int64 = -1;
 	var projectName: String = "";
 	var createTime: String = "";

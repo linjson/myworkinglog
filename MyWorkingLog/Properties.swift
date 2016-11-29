@@ -15,12 +15,12 @@ class Properties {
 	var dbPath: String {
 		set {
 			table.setValue(newValue, forKey: "dbPath");
-			table.writeToFile(path, atomically: true);
+			table.write(toFile: path, atomically: true);
 		}
 		get {
 
-			let defaultPath = NSBundle.mainBundle().pathForResource("data", ofType: "db")!
-			guard let path = table.valueForKey("dbPath") else {
+			let defaultPath = Bundle.main.path(forResource: "data", ofType: "db")!
+			guard let path = table.value(forKey: "dbPath") else {
 				return defaultPath;
 			}
 
@@ -31,7 +31,7 @@ class Properties {
 	}
 
 	init() {
-		path = NSBundle.mainBundle().pathForResource("properties", ofType: "plist");
+		path = Bundle.main.path(forResource: "properties", ofType: "plist");
 		table = NSMutableDictionary.init(contentsOfFile: path);
 	}
 

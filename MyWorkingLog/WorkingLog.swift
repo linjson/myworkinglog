@@ -8,7 +8,7 @@
 
 import Cocoa
 
-public class WorkingLog: NSObject {
+open class WorkingLog: NSObject {
 	var id: Int64 = -1;
 	var pid: Int64 = -1;
 	var content: String = "";

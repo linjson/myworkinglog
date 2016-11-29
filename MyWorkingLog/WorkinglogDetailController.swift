@@ -28,7 +28,7 @@ class WorkinglogDetailController: NSViewController, NSComboBoxDataSource {
 	}
 
 	func registerNotifiction() {
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(changeProject), name: NOTIFY_DATACHANGE_CHANGEPROJECTSELECT, object: nil);
+		NotificationCenter.default.addObserver(self, selector: #selector(changeProject), name: NSNotification.Name(rawValue: NOTIFY_DATACHANGE_CHANGEPROJECTSELECT), object: nil);
 	}
 //
 //	func unRegisterNotifiction() {
@@ -40,13 +40,13 @@ class WorkinglogDetailController: NSViewController, NSComboBoxDataSource {
 		puProject.removeAllItems();
 		projectData.forEach {
 			p in
-			puProject.addItemWithTitle(p.projectName)
+			puProject.addItem(withTitle: p.projectName)
 		};
 	}
 
 	override func viewWillAppear() {
 		bindPUProjectData();
-		btnModify.hidden = working == nil;
+		btnModify.isHidden = working == nil;
 		if (working != nil) {
 			bindData();
 			command = "modify";
@@ -64,7 +64,7 @@ class WorkinglogDetailController: NSViewController, NSComboBoxDataSource {
 		resetField();
 	}
 
-	@IBAction func doAdd(sender: AnyObject) {
+	@IBAction func doAdd(_ sender: AnyObject) {
 
 		if (command == "add") {
 
@@ -76,60 +76,60 @@ class WorkinglogDetailController: NSViewController, NSComboBoxDataSource {
 			working.content = txtContent.string!;
 			working.workTime = txtLength.objectValue as! Double;
 			working.workType = (puType.selectedItem?.title)!;
-			working.createTime = (dpDate.formatter as! NSDateFormatter).stringFromDate(dpDate.dateValue);
+			working.createTime = (dpDate.formatter as! DateFormatter).string(from: dpDate.dateValue);
 			working.pid = projectData[puProject.indexOfSelectedItem].id;
 
 			let r = dbHelper.workinglog.addWorkingLog(modal: working);
 			if (r != Int64(ERROR)) {
-				NSNotificationCenter.defaultCenter().postNotificationName(NOTIFY_POPALERT, object: PopAlertType.Success.rawValue);
+				NotificationCenter.default.post(name: Notification.Name(rawValue: NOTIFY_POPALERT), object: PopAlertType.success.rawValue);
 				closeWindow();
-				NSNotificationCenter.defaultCenter().postNotificationName(NOTIFY_DATACHANGE_WORKINGLOG, object: nil);
+				NotificationCenter.default.post(name: Notification.Name(rawValue: NOTIFY_DATACHANGE_WORKINGLOG), object: nil);
 			} else {
-				NSNotificationCenter.defaultCenter().postNotificationName(NOTIFY_POPALERT, object: PopAlertType.Error.rawValue);
+				NotificationCenter.default.post(name: Notification.Name(rawValue: NOTIFY_POPALERT), object: PopAlertType.error.rawValue);
 				log("doAdd error");
 			}
 		}
 
 	}
 
-	@IBAction func doCancal(sender: AnyObject) {
+	@IBAction func doCancal(_ sender: AnyObject) {
 		closeWindow();
 	}
 
-	@IBAction func doModify(sender: AnyObject) {
+	@IBAction func doModify(_ sender: AnyObject) {
 		if (command == "modify") {
 			working.content = txtContent.string!;
 			working.workTime = txtLength.objectValue as! Double;
 			working.workType = (puType.selectedItem?.title)!;
-			working.createTime = (dpDate.formatter as! NSDateFormatter).stringFromDate(dpDate.dateValue);
+			working.createTime = (dpDate.formatter as! DateFormatter).string(from: dpDate.dateValue);
 			working.pid = projectData[puProject.indexOfSelectedItem].id;
 
 			let r = dbHelper.workinglog.updateWorkingLog(modal: working);
 			if (r != ERROR) {
-				NSNotificationCenter.defaultCenter().postNotificationName(NOTIFY_POPALERT, object: PopAlertType.Success.rawValue);
+				NotificationCenter.default.post(name: Notification.Name(rawValue: NOTIFY_POPALERT), object: PopAlertType.success.rawValue);
 				working = nil;
 				closeWindow();
-				NSNotificationCenter.defaultCenter().postNotificationName(NOTIFY_DATACHANGE_WORKINGLOG, object: nil);
+				NotificationCenter.default.post(name: Notification.Name(rawValue: NOTIFY_DATACHANGE_WORKINGLOG), object: nil);
 			} else {
-				NSNotificationCenter.defaultCenter().postNotificationName(NOTIFY_POPALERT, object: PopAlertType.Error.rawValue);
+				NotificationCenter.default.post(name: Notification.Name(rawValue: NOTIFY_POPALERT), object: PopAlertType.error.rawValue);
 				log("doModify error");
 			}
 		}
 	}
 
-	func changeProject(notify: NSNotification) {
+	func changeProject(_ notify: Notification) {
 		guard let id = notify.object else { return; }
-		self.selectProjectId = Int64(id.integerValue);
+        self.selectProjectId = id as! Int64;
 	}
 
-	func selectProject(id: Int64) {
-		let i = projectData.indexOf({ p -> Bool in p.id == id });
+	func selectProject(_ id: Int64) {
+		let i = projectData.index(where: { p -> Bool in p.id == id });
 		var index = 0;
 		if i != nil {
 			index = i!;
 		}
 
-		self.puProject.selectItemAtIndex(index);
+		self.puProject.selectItem(at: index);
 	}
 
 	func validateData() -> Bool {
@@ -145,9 +145,9 @@ class WorkinglogDetailController: NSViewController, NSComboBoxDataSource {
 
 	func resetField() {
 
-		dpDate.dateValue = NSDate.init();
+		dpDate.dateValue = Date.init();
 		txtLength.objectValue = 7.5;
-		puType.selectItemAtIndex(0);
+		puType.selectItem(at: 0);
 		txtContent.string = "";
 		working = nil;
 
@@ -157,19 +157,19 @@ class WorkinglogDetailController: NSViewController, NSComboBoxDataSource {
 		selectProject(working.pid);
 		txtLength.objectValue = working.workTime;
 		txtContent.string = working.content;
-		dpDate.dateValue = (dpDate.formatter as! NSDateFormatter).dateFromString(working.createTime)!;
-		puType.selectItemWithTitle(working.workType);
+		dpDate.dateValue = (dpDate.formatter as! DateFormatter).date(from: working.createTime)!;
+		puType.selectItem(withTitle: working.workType);
 	}
 
 	func closeWindow() {
 		self.view.window?.sheetParent?.endSheet((self.view.window)!);
 	}
 
-	func numberOfItemsInComboBox(aComboBox: NSComboBox) -> Int {
+	func numberOfItems(in aComboBox: NSComboBox) -> Int {
 		return self.projectData.count;
 	}
 
-	func comboBox(aComboBox: NSComboBox, objectValueForItemAtIndex index: Int) -> AnyObject {
+	func comboBox(_ aComboBox: NSComboBox, objectValueForItemAt index: Int) -> Any? {
 		return self.projectData[index].projectName;
 	}
 

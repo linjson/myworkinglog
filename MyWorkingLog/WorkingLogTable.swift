@@ -8,7 +8,7 @@
 
 import Foundation
 import SQLite
-public class WorkingLogTable {
+open class WorkingLogTable {
 	let table: Table;
 	let id: Expression<Int64>;
 	let pid: Expression<Int64>;
@@ -47,7 +47,7 @@ public class WorkingLogTable {
 		}
 	}
 
-	func addWorkingLog(pid: Int64, content: String, createTime: String, workTime: Double, workType: String) -> Int64 {
+	func addWorkingLog(_ pid: Int64, content: String, createTime: String, workTime: Double, workType: String) -> Int64 {
 		do {
 			return try db.run(table.insert(self.pid <- pid, self.content <- content, self.createTime <- createTime, self.workTime <- workTime, self.workType <- workType));
 		} catch let e {
@@ -60,7 +60,7 @@ public class WorkingLogTable {
 		return addWorkingLog(working.pid, content: working.content, createTime: working.createTime, workTime: working.workTime, workType: working.workType);
 	}
 
-	func deteleById(id: [Int64]) -> Int {
+	func deteleById(_ id: [Int64]) -> Int {
 		do {
 			return try db.run(table.filter(id.contains(self.id)).delete());
 		} catch let e {
@@ -69,7 +69,7 @@ public class WorkingLogTable {
 		return ERROR;
 	}
 
-	func deleteByPid(pid: Int64) -> Int {
+	func deleteByPid(_ pid: Int64) -> Int {
 		do {
 			return try db.run(table.filter(self.pid == pid).delete());
 		} catch let e {
@@ -79,7 +79,7 @@ public class WorkingLogTable {
 		return ERROR;
 	}
 
-	func updateWorkingLog(id: Int64, pid: Int64, content: String, workTime: Double, workType: String, createTime: String) -> Int {
+	func updateWorkingLog(_ id: Int64, pid: Int64, content: String, workTime: Double, workType: String, createTime: String) -> Int {
 		do {
 			return try db.run(table.filter(self.id == id).update(self.content <- content, self.workTime <- workTime, self.workType <- workType, self.pid <- pid, self.createTime <- createTime));
 		} catch {
@@ -92,7 +92,7 @@ public class WorkingLogTable {
 		return updateWorkingLog(working.id, pid: working.pid, content: working.content, workTime: working.workTime, workType: working.workType, createTime: working.createTime);
 	}
 
-	func moveWorkingLog(id: [Int64], pid: Int64) -> Int {
+	func moveWorkingLog(_ id: [Int64], pid: Int64) -> Int {
 		do {
 			return try db.run(table.filter(id.contains(self.id)).update(self.pid <- pid));
 		} catch {
@@ -114,7 +114,7 @@ public class WorkingLogTable {
 		return findByPid(-999);
 	}
 
-	func findByPid(proid: Int64) -> [WorkingLog] {
+	func findByPid(_ proid: Int64) -> [WorkingLog] {
 
 		var list: [WorkingLog] = [];
 

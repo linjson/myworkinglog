@@ -19,7 +19,7 @@ let ERROR = 0;
 
 var dbHelper = DBHelper();
 
-func log(items: Any...) {
+func log(_ items: Any...) {
 	let debug = true;
 	if (debug) {
 		print("==>", items);

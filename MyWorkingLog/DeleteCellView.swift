@@ -8,18 +8,18 @@
 
 import Cocoa
 
-public class DeleteCellView: NSTableCellView {
+open class DeleteCellView: NSTableCellView {
 
 	var data: WorkingLog!;
 	@IBOutlet weak var btnDelete: NSButton!
 
-	@IBAction func doDeleteClick(sender: AnyObject) {
+	@IBAction func doDeleteClick(_ sender: AnyObject) {
 		let r = dbHelper.workinglog.deteleById([data.id])
 		if (r != ERROR) {
-			NSNotificationCenter.defaultCenter().postNotificationName(NOTIFY_POPALERT, object: PopAlertType.Success.rawValue);
-			NSNotificationCenter.defaultCenter().postNotificationName(NOTIFY_DATACHANGE_WORKINGLOG, object: nil);
+			NotificationCenter.default.post(name: Notification.Name(rawValue: NOTIFY_POPALERT), object: PopAlertType.success.rawValue);
+			NotificationCenter.default.post(name: Notification.Name(rawValue: NOTIFY_DATACHANGE_WORKINGLOG), object: nil);
 		} else {
-			NSNotificationCenter.defaultCenter().postNotificationName(NOTIFY_POPALERT, object: PopAlertType.Error.rawValue);
+			NotificationCenter.default.post(name: Notification.Name(rawValue: NOTIFY_POPALERT), object: PopAlertType.error.rawValue);
 			log("doDeleteClick error");
 		}
 	}

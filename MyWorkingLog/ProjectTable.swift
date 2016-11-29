@@ -8,7 +8,7 @@
 
 import Foundation
 import SQLite
-public class ProjectTable {
+open class ProjectTable {
 	let table: Table;
 	let id: Expression<Int64>;
 	let projectName: Expression<String>;
@@ -26,13 +26,14 @@ public class ProjectTable {
 		self.createTableSql();
 	}
 
-	private func createTableSql() {
+	fileprivate func createTableSql() {
 
 		let sql = self.table.create(ifNotExists: true) {
 			t in
 			t.column(self.id, primaryKey: true);
 			t.column(self.projectName);
-			t.column(self.createTime, null: true);
+//			t.column(self.createTime, null: true);
+            t.column(self.createTime);
 		};
 
 //		log(sql);
@@ -45,7 +46,7 @@ public class ProjectTable {
 		}
 	}
 
-	public func addProject(name: String, time: String) -> Int64 {
+	open func addProject(_ name: String, time: String) -> Int64 {
 		do {
 			return try db.run(self.table.insert(projectName <- name, createTime <- time));
 		} catch let e {
@@ -55,11 +56,11 @@ public class ProjectTable {
 		return Int64(ERROR);
 	}
 
-	public func addProject(modal p: Project) -> Int64 {
+	open func addProject(modal p: Project) -> Int64 {
 		return addProject(p.projectName, time: p.createTime);
 	}
 
-	public func updateProject(id: Int64, name: String) -> Int {
+	open func updateProject(_ id: Int64, name: String) -> Int {
 		let sql = self.table.filter(self.id == id).update(self.projectName <- name);
 		do {
 			return try db.run(sql);
@@ -69,7 +70,7 @@ public class ProjectTable {
 		return ERROR;
 	}
 
-	public func findAll(hasAll: Bool = true) -> [Project] {
+	open func findAll(_ hasAll: Bool = true) -> [Project] {
 
 		var list: [Project] = [];
 
@@ -95,12 +96,12 @@ public class ProjectTable {
 		return list;
 	}
 
-	public func deleteById(id: Int64) -> Int {
+	open func deleteById(_ id: Int64) -> Int {
 		do {
 
 			try db.transaction {
-				try self.db.run(self.table.filter(self.id == id).delete())
-				self.workingLog.deleteByPid(id);
+				_=try self.db.run(self.table.filter(self.id == id).delete())
+				_=self.workingLog.deleteByPid(id);
 			}
 			return 1;
 		} catch let e {
@@ -109,7 +110,7 @@ public class ProjectTable {
 		return ERROR;
 	}
 
-	public func findAllCount() -> [Project] {
+	open func findAllCount() -> [Project] {
 
 		var list: [Project] = [];
 
@@ -139,4 +140,5 @@ public class ProjectTable {
 		return ERROR;
 	}
 
+    
 }
