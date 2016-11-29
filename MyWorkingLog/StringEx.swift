@@ -9,20 +9,20 @@ import Cocoa
 import Foundation
 
 public protocol CalculateTextSize {
-	func textSizeWithFont(font: NSFont, constrainedToSize size: CGSize) -> CGSize;
+	func textSizeWithFont(_ font: NSFont, constrainedToSize size: CGSize) -> CGSize;
 }
 
 extension String: CalculateTextSize {
-	public func textSizeWithFont(font: NSFont, constrainedToSize size: CGSize) -> CGSize {
-		let temp: NSString = self;
+	public func textSizeWithFont(_ font: NSFont, constrainedToSize size: CGSize) -> CGSize {
+		let temp: NSString = self as NSString;
 		return temp.textSizeWithFont(font, constrainedToSize: size);
 	}
 
-	public func subString(len: Int) -> String {
+	public func subString(_ len: Int) -> String {
 		if (len >= self.characters.count || len < 0) {
 			return self;
 		}
-		return self.substringToIndex(self.startIndex.advancedBy(len));
+		return self.substring(to: self.characters.index(self.startIndex, offsetBy: len));
 	}
 
 	public func isNotNull() -> Bool {
@@ -34,17 +34,17 @@ extension String: CalculateTextSize {
 
 extension NSString: CalculateTextSize {
 
-	public func textSizeWithFont(font: NSFont, constrainedToSize size: CGSize) -> CGSize {
+	public func textSizeWithFont(_ font: NSFont, constrainedToSize size: CGSize) -> CGSize {
 
 		let value = self;
 		var textSize: CGSize!
 		let attributes = [NSFontAttributeName: font];
-		if CGSizeEqualToSize(size, CGSizeZero) {
-			textSize = value.sizeWithAttributes(attributes)
+		if size.equalTo(CGSize.zero) {
+			textSize = value.size(withAttributes: attributes)
 		} else {
-			let option = NSStringDrawingOptions.UsesLineFragmentOrigin
+			let option = NSStringDrawingOptions.usesLineFragmentOrigin
 			let attributes = [NSFontAttributeName: font];
-			let stringRect = value.boundingRectWithSize(size, options: option, attributes: attributes, context: nil)
+			let stringRect = value.boundingRect(with: size, options: option, attributes: attributes, context: nil)
 			textSize = stringRect.size
 		}
 		return textSize

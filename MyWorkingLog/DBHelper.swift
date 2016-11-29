@@ -9,7 +9,7 @@
 import Foundation
 import SQLite
 
-public class DBHelper {
+open class DBHelper {
 
 	var dbPath: String!;
 
@@ -34,7 +34,7 @@ public class DBHelper {
 //
 //	}
 
-	private func createTables() {
+	fileprivate func createTables() {
 		do {
 			self.db = try Connection(dbPath);
 			assert(self.db != nil);
@@ -51,7 +51,7 @@ public class DBHelper {
 		}
 	}
 
-	public func deleteAll() {
+	open func deleteAll() {
 		self.project.deleteAll();
 		self.workinglog.deleteAll();
 	}

@@ -22,8 +22,8 @@ class ProjectManagerViewController: NSViewController, NSOutlineViewDataSource, N
 
 	override func viewDidLoad() {
 
-		outlineView.setDataSource(self);
-		outlineView.setDelegate(self);
+		outlineView.dataSource = self;
+		outlineView.delegate = self;
 
 	}
 
@@ -45,26 +45,26 @@ class ProjectManagerViewController: NSViewController, NSOutlineViewDataSource, N
 
 	func showAddBox() {
 		txtNewName.objectValue = "";
-		modifyBox.hidden = true;
-		addBox.hidden = false;
+		modifyBox.isHidden = true;
+		addBox.isHidden = false;
 	}
 
 	func showModifyBox() {
-		txtDelete.hidden = true;
+		txtDelete.isHidden = true;
 		txtModifyName.stringValue = "";
-		modifyBox.hidden = false;
-		addBox.hidden = true;
+		modifyBox.isHidden = false;
+		addBox.isHidden = true;
 	}
 
-	@IBAction func doClose(sender: AnyObject) {
+	@IBAction func doClose(_ sender: AnyObject) {
 		self.closeWindow();
 	}
 
-	@IBAction func doAdd(sender: AnyObject) {
+	@IBAction func doAdd(_ sender: AnyObject) {
 		showAddBox()
 	}
 
-	@IBAction func doRemove(sender: AnyObject) {
+	@IBAction func doRemove(_ sender: AnyObject) {
 
 		if (outlineView.selectedRow == -1) {
 			return;
@@ -75,36 +75,36 @@ class ProjectManagerViewController: NSViewController, NSOutlineViewDataSource, N
 		}
 
 		let p = projectData[outlineView.selectedRow];
-		if (p.workinglogCount != 0 && txtDelete.hidden) {
-			txtDelete.hidden = false;
+		if (p.workinglogCount != 0 && txtDelete.isHidden) {
+			txtDelete.isHidden = false;
 			return;
 		}
 		let r = dbHelper.project.deleteById(p.id);
 
 		if (r != ERROR) {
-			NSNotificationCenter.defaultCenter().postNotificationName(NOTIFY_POPALERT, object: PopAlertType.Success.rawValue);
+			NotificationCenter.default.post(name: Notification.Name(rawValue: NOTIFY_POPALERT), object: PopAlertType.success.rawValue);
 			refreshData();
 			notifyData();
 			showAddBox();
 		} else {
-			NSNotificationCenter.defaultCenter().postNotificationName(NOTIFY_POPALERT, object: PopAlertType.Error.rawValue);
+			NotificationCenter.default.post(name: Notification.Name(rawValue: NOTIFY_POPALERT), object: PopAlertType.error.rawValue);
 			log("doRemove error");
 		}
 	}
 
-	@IBAction func doAddApply(sender: AnyObject) {
+	@IBAction func doAddApply(_ sender: AnyObject) {
 
 		if (txtNewName.stringValue == "") {
 			Alert.show(self.view.window!, error: "内容不能为空");
 			return;
 		}
 
-		let date = NSDate.init();
+		let date = Date.init();
 
-		let format = NSDateFormatter.init();
+		let format = DateFormatter.init();
 		format.dateFormat = "yyyy-MM-dd HH:mm:ss";
 
-		let dateString = format.stringFromDate(date);
+		let dateString = format.string(from: date);
 
 		let p = Project();
 		p.projectName = txtNewName.stringValue;
@@ -113,22 +113,22 @@ class ProjectManagerViewController: NSViewController, NSOutlineViewDataSource, N
 		let r = dbHelper.project.addProject(modal: p);
 
 		if (r != Int64(ERROR)) {
-			NSNotificationCenter.defaultCenter().postNotificationName(NOTIFY_POPALERT, object: PopAlertType.Success.rawValue);
+			NotificationCenter.default.post(name: Notification.Name(rawValue: NOTIFY_POPALERT), object: PopAlertType.success.rawValue);
 			refreshData();
 			txtNewName.stringValue = "";
 			notifyData();
 		} else {
-			NSNotificationCenter.defaultCenter().postNotificationName(NOTIFY_POPALERT, object: PopAlertType.Error.rawValue);
+			NotificationCenter.default.post(name: Notification.Name(rawValue: NOTIFY_POPALERT), object: PopAlertType.error.rawValue);
 			log("doAddApply error");
 		}
 
 	}
 
 	func notifyData() {
-		NSNotificationCenter.defaultCenter().postNotificationName(NOTIFY_DATACHANGE_PROJECT, object: nil);
+		NotificationCenter.default.post(name: Notification.Name(rawValue: NOTIFY_DATACHANGE_PROJECT), object: nil);
 	}
 
-	@IBAction func doModifyApply(sender: AnyObject) {
+	@IBAction func doModifyApply(_ sender: AnyObject) {
 
 		if (txtModifyName.stringValue == "") {
 			Alert.show(self.view.window!, error: "内容不能为空");
@@ -142,39 +142,39 @@ class ProjectManagerViewController: NSViewController, NSOutlineViewDataSource, N
 		let r = dbHelper.project.updateProject(m.id, name: txtModifyName.stringValue);
 
 		if (r == ERROR) {
-			NSNotificationCenter.defaultCenter().postNotificationName(NOTIFY_POPALERT, object: PopAlertType.Error.rawValue);
+			NotificationCenter.default.post(name: Notification.Name(rawValue: NOTIFY_POPALERT), object: PopAlertType.error.rawValue);
 			log("doModifyApply error");
 		} else {
-			NSNotificationCenter.defaultCenter().postNotificationName(NOTIFY_POPALERT, object: PopAlertType.Success.rawValue);
+			NotificationCenter.default.post(name: Notification.Name(rawValue: NOTIFY_POPALERT), object: PopAlertType.success.rawValue);
 			refreshData();
 			notifyData();
 		}
 	}
-	func outlineView(outlineView: NSOutlineView, numberOfChildrenOfItem item: AnyObject?) -> Int {
+	func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
 		return projectData == nil ? 0 : projectData.count;
 	}
 
-	func outlineView(outlineView: NSOutlineView, isItemExpandable item: AnyObject) -> Bool {
+	func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
 		return false;
 	}
 
-	func outlineView(outlineView: NSOutlineView, objectValueForTableColumn tableColumn: NSTableColumn?, byItem item: AnyObject?) -> AnyObject? {
+	func outlineView(_ outlineView: NSOutlineView, objectValueFor tableColumn: NSTableColumn?, byItem item: Any?) -> Any? {
 		return item;
 	}
 
-	func outlineView(outlineView: NSOutlineView, child index: Int, ofItem item: AnyObject?) -> AnyObject {
+	func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
 		return projectData[index];
 	}
 
-	func outlineView(outlineView: NSOutlineView, viewForTableColumn tableColumn: NSTableColumn?, item: AnyObject) -> NSView? {
+	func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
 		let row: Project = item as! Project;
 
-		let a = outlineView.makeViewWithIdentifier("DataCell", owner: item) as! NSTableCellView;
+		let a = outlineView.make(withIdentifier: "DataCell", owner: item) as! NSTableCellView;
 		a.textField?.objectValue = "\(row.projectName)(\(row.workinglogCount))";
 		return a;
 	}
 
-	func outlineViewSelectionDidChange(notification: NSNotification) {
+	func outlineViewSelectionDidChange(_ notification: Notification) {
 		showModifyBox();
 		modifyData = projectData[outlineView.selectedRow];
 		txtModifyName.stringValue = modifyData!.projectName;

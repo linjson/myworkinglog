@@ -20,11 +20,11 @@ class DataBaseViewController: NSViewController {
 		self.view.window?.sheetParent?.endSheet((self.view.window)!);
 	}
 
-	@IBAction func doClose(sender: AnyObject) {
+	@IBAction func doClose(_ sender: AnyObject) {
 		close();
 	}
 
-	@IBAction func doChangeDataBase(sender: AnyObject) {
+	@IBAction func doChangeDataBase(_ sender: AnyObject) {
 
 		if (txtPath.string == dbHelper.dbPath) {
 			close();
@@ -35,14 +35,14 @@ class DataBaseViewController: NSViewController {
 		props.dbPath = pcPath.stringValue;
 		dbHelper = DBHelper();
 
-		NSNotificationCenter.defaultCenter().postNotificationName(NOTIFY_DATACHANGE_PROJECT, object: nil);
-		NSNotificationCenter.defaultCenter().postNotificationName(NOTIFY_DATACHANGE_WORKINGLOG, object: nil);
-		NSNotificationCenter.defaultCenter().postNotificationName(NOTIFY_POPALERT, object: PopAlertType.Success.rawValue);
+		NotificationCenter.default.post(name: Notification.Name(rawValue: NOTIFY_DATACHANGE_PROJECT), object: nil);
+		NotificationCenter.default.post(name: Notification.Name(rawValue: NOTIFY_DATACHANGE_WORKINGLOG), object: nil);
+		NotificationCenter.default.post(name: Notification.Name(rawValue: NOTIFY_POPALERT), object: PopAlertType.success.rawValue);
 
 		close();
 	}
 
-	@IBAction func changePath(sender: AnyObject) {
+	@IBAction func changePath(_ sender: AnyObject) {
 
 		txtPath.string = pcPath.stringValue;
 	}

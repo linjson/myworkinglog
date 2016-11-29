@@ -14,12 +14,12 @@ class WindowController: NSWindowController {
 	var projectManagerWindow: NSWindowController!;
 	var dataBaseWindow: NSWindowController!;
 	override func windowDidLoad() {
-		self.window?.titleVisibility = .Hidden;
-		workinglogDetailWindow = self.storyboard!.instantiateControllerWithIdentifier("WorkinglogDetailWindow") as! NSWindowController;
+		self.window?.titleVisibility = .hidden;
+		workinglogDetailWindow = self.storyboard!.instantiateController(withIdentifier: "WorkinglogDetailWindow") as! NSWindowController;
 
-		projectManagerWindow = self.storyboard?.instantiateControllerWithIdentifier("ProjectManagerWindow") as! NSWindowController;
+		projectManagerWindow = self.storyboard?.instantiateController(withIdentifier: "ProjectManagerWindow") as! NSWindowController;
 
-		dataBaseWindow = self.storyboard?.instantiateControllerWithIdentifier("DataBaseWindow") as! NSWindowController;
+		dataBaseWindow = self.storyboard?.instantiateController(withIdentifier: "DataBaseWindow") as! NSWindowController;
 
 		registerNotifiction();
 	}
@@ -29,26 +29,26 @@ class WindowController: NSWindowController {
 	}
 
 	func unregisterNotifiction() {
-		NSNotificationCenter.defaultCenter().removeObserver(self, name: NOTIFY_EDITWORKINGLOG, object: nil);
-		NSNotificationCenter.defaultCenter().removeObserver(self, name: NOTIFY_POPALERT, object: nil);
+		NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: NOTIFY_EDITWORKINGLOG), object: nil);
+		NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: NOTIFY_POPALERT), object: nil);
 	}
 
 	func registerNotifiction() {
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(openWorkinglogDetail(_:)), name: NOTIFY_EDITWORKINGLOG, object: nil);
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(showPopAlert(_:)), name: NOTIFY_POPALERT, object: nil);
+		NotificationCenter.default.addObserver(self, selector: #selector(openWorkinglogDetail(_:)), name: NSNotification.Name(rawValue: NOTIFY_EDITWORKINGLOG), object: nil);
+		NotificationCenter.default.addObserver(self, selector: #selector(showPopAlert(_:)), name: NSNotification.Name(rawValue: NOTIFY_POPALERT), object: nil);
 	}
 
-	func showPopAlert(notify: NSNotification) {
+	func showPopAlert(_ notify: Notification) {
 		guard let type = notify.object else {
 			return ;
 		}
-
-		let a = type.integerValue;
+        
+        let a = type as! Int;
 
 		PopAlert.create(self.window, with: PopAlertType(rawValue: a)!);
 	}
 
-	func openWorkinglogDetail(notify: NSNotification) {
+	func openWorkinglogDetail(_ notify: Notification) {
 
 		guard let working = notify.object as? WorkingLog else {
 			return ;
@@ -63,29 +63,29 @@ class WindowController: NSWindowController {
 
 	}
 
-	@IBAction func doAddWorkingLog(sender: AnyObject) {
+	@IBAction func doAddWorkingLog(_ sender: AnyObject) {
 
 		self.window?.beginSheet(workinglogDetailWindow.window!, completionHandler: { (NSModalResponse) in
 
 		})
 	}
-	@IBAction func doOpenDataBaseWindow(sender: AnyObject) {
+	@IBAction func doOpenDataBaseWindow(_ sender: AnyObject) {
 		self.window?.beginSheet(dataBaseWindow.window!, completionHandler: { (NSModalResponse) in
 
 		})
 
 	}
 
-	@IBAction func doProjectManager(sender: AnyObject) {
+	@IBAction func doProjectManager(_ sender: AnyObject) {
 		self.window?.beginSheet(projectManagerWindow.window!, completionHandler: { (NSModalResponse) in
 
 		})
 	}
 
 	var i = 0;
-	@IBAction func test(sender: AnyObject) {
+	@IBAction func test(_ sender: AnyObject) {
 		i += 1;
-		PopAlert.create(self.window, with: i % 2 == 0 ? PopAlertType.Error : PopAlertType.Info);
+		PopAlert.create(self.window, with: i % 2 == 0 ? PopAlertType.error : PopAlertType.info);
 
 	}
 }

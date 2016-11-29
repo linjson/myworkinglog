@@ -9,14 +9,14 @@
 import Cocoa
 
 class Alert {
-	static func show(window: NSWindow, error: String) {
+	static func show(_ window: NSWindow, error: String) {
 		let alert = NSAlert()
 		alert.messageText = "ERROR:";
 		alert.informativeText = error;
 		let errorIcon = NSImage.init(named: "NSStopProgressFreestandingTemplate");
 
 		alert.icon = errorIcon;
-		alert.beginSheetModalForWindow(window, completionHandler: { (m) -> Void in });
+		alert.beginSheetModal(for: window, completionHandler: { (m) -> Void in });
 
 //		alert.runModal();
 	}
