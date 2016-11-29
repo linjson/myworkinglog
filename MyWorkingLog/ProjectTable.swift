@@ -32,8 +32,8 @@ open class ProjectTable {
 			t in
 			t.column(self.id, primaryKey: true);
 			t.column(self.projectName);
-//			t.column(self.createTime, null: true);
-            t.column(self.createTime);
+			t.column(self.createTime, null: true);
+//            t.column(self.createTime);
 		};
 
 //		log(sql);

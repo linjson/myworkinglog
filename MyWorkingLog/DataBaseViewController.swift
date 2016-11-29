@@ -32,7 +32,8 @@ class DataBaseViewController: NSViewController {
 		}
 
 		let props = Properties();
-		props.dbPath = pcPath.stringValue;
+//        props.dbPath = Bundle.main.path(forResource: "data", ofType: "db")!;//pcPath.stringValue;
+        props.dbPath = pcPath.stringValue;
 		dbHelper = DBHelper();
 
 		NotificationCenter.default.post(name: Notification.Name(rawValue: NOTIFY_DATACHANGE_PROJECT), object: nil);

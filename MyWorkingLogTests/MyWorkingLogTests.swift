@@ -50,12 +50,12 @@ class MyWorkingLogTests: XCTestCase {
 //		db.workinglog?.deteleById(b);
 
 //		let a = db.workinglog?.updateWorkingLog(2, content: "dddd", workTime: 3, workType: "");
-		var b = [Int64()];
-		b.append(2);
-		let a = db.workinglog?.moveWorkingLog(b, pid: 20);
-
-		log(a)
-		XCTAssert(a >= 0, "成功");
+//		var b = [Int64()];
+//		b.append(2);
+//		let a = db.workinglog?.moveWorkingLog(b, pid: 20);
+//
+//		log(a)
+//		XCTAssert(a >= 0, "成功");
 
 	}
 
@@ -83,36 +83,39 @@ class MyWorkingLogTests: XCTestCase {
 	}
 
 	func testAddData() {
-		let db = DBHelper();
-		db.deleteAll();
-		let date = Date.init();
-
-		let format = DateFormatter.init();
-		format.dateFormat = "yyyy-MM-dd HH:mm:ss";
-
-		let dateString = format.string(from: date);
-
-		for i in 0...2 {
-			let name = "pro";
-			let n = name + String(i);
-			guard let pid = db.project?.addProject(n, time: dateString) else {
-				continue;
-			}
-			if (Int(pid) != ERROR) {
-				for x in 0...10 {
-					let content = n + ("-item" + String(x))
-					let s = 2.4;
-
-					db.workinglog?.addWorkingLog(pid, content: content, createTime: dateString, workTime: s, workType: "其他");
-				}
-			}
-		}
-
+//		let db = DBHelper();
+//		db.deleteAll();
+//		let date = Date.init();
+//
+//		let format = DateFormatter.init();
+//		format.dateFormat = "yyyy-MM-dd HH:mm:ss";
+//
+//		let dateString = format.string(from: date);
+//
+//		for i in 0...2 {
+//			let name = "pro";
+//			let n = name + String(i);
+//			guard let pid = db.project?.addProject(n, time: dateString) else {
+//				continue;
+//			}
+//			if (Int(pid) != ERROR) {
+//				for x in 0...10 {
+//					let content = n + ("-item" + String(x))
+//					let s = 2.4;
+//
+//					db.workinglog?.addWorkingLog(pid, content: content, createTime: dateString, workTime: s, workType: "其他");
+//				}
+//			}
+//		}
+//
 //		db.project?.addProject("pro1", time: "");
 	}
 
 	func testString() {
 //
+        let db=DBHelper();
+        let data=db.workinglog.find(content: "s");
+        log(data.count);
 
 	}
 }
