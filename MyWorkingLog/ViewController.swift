@@ -71,14 +71,13 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
     
     func refreshWorkingLogData(_ notify:Notification?=nil) {
         
-        if(notify==nil){
+        if(notify==nil||notify?.object==nil){
             
             if (self.selectPid == -1) {
                 workingLogData = dbHelper.workinglog.find();
             } else {
                 workingLogData = dbHelper.workinglog.find(pid:self.selectPid);
             }
-            
         }else{
             let search=notify?.object as! String;
             workingLogData=dbHelper.workinglog.find(content: search);
