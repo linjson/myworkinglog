@@ -20,7 +20,7 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
     var selectPid: Int64!;
     var workingLogData: [WorkingLog]!;
     var selectWorking: [Int64]!;
-    
+    var search:String?;
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -71,21 +71,16 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
     
     func refreshWorkingLogData(_ notify:Notification?=nil) {
         
-        if(notify==nil||notify?.object==nil){
-            
-            if (self.selectPid == -1) {
-                workingLogData = dbHelper.workinglog.find();
-            } else {
-                workingLogData = dbHelper.workinglog.find(pid:self.selectPid);
-            }
-        }else{
-            let search=notify?.object as! String;
-            workingLogData=dbHelper.workinglog.find(content: search);
-            
+        if(notify != nil && notify?.object != nil){
+            search=notify?.object as? String;
         }
+        
+        workingLogData=dbHelper.workinglog.find(id:self.selectPid,content: search);
+        
         tableview.reloadData();
         
     }
+    
     
     func resetData() {
         

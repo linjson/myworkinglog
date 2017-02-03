@@ -141,13 +141,24 @@ open class WorkingLogTable {
         return list;
     }
     
-    func find(content c:String)->[WorkingLog]{
+    func find(id proid:Int64?,content c:String?)->[WorkingLog]{
         var list: [WorkingLog] = [];
         do {
             var table = self.table;
             
-            if(c.characters.count != 0){
-                table = table.filter(self.content.like("%\(c)%"));
+            if(proid != nil){
+                let a=proid!;
+                if(a>=0){
+                    table=table.filter(self.pid==a);
+                }
+            }
+            
+            
+            if((c) != nil) {
+                let cc=c!;
+            if( cc.characters.count != 0){
+                table = table.filter(self.content.like("%\(cc)%"));
+            }
             }
             
             
