@@ -1,2 +1,9 @@
 *.xcuserstate
 data.db
+MyWorkingLog.xcodeproj/project.pbxproj
+MyWorkingLog.xcodeproj/xcuserdata/ljs.xcuserdatad/xcschemes/MyWorkingLog.xcscheme
+MyWorkingLog.xcodeproj/xcuserdata/ljs.xcuserdatad/xcschemes/MyWorkingLogTests.xcscheme
+MyWorkingLog.xcworkspace/xcuserdata/ljs.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
+Pods/Pods.xcodeproj/xcuserdata/ljs.xcuserdatad/xcschemes/Pods-MyWorkingLog.xcscheme
+Pods/Pods.xcodeproj/xcuserdata/ljs.xcuserdatad/xcschemes/Pods-MyWorkingLogTests.xcscheme
+Pods/Pods.xcodeproj/xcuserdata/ljs.xcuserdatad/xcschemes/SQLite.swift.xcscheme
