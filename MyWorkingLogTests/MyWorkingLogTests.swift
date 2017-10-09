@@ -37,7 +37,7 @@ class MyWorkingLogTests: XCTestCase {
 	}
 
 	func testDB() {
-		let db = DBHelper();
+//        let db = DBHelper();
 
 //		let a = db.project?.addProject("test", time: "ss");
 //		let a = db.project?.updateProject(2000, name: "test1");
@@ -112,10 +112,15 @@ class MyWorkingLogTests: XCTestCase {
 	}
 
 	func testString() {
+        
+        let date="2010-10-10 33:33:33";
+        NSLog("==>%@", date.subString(13));
+        
+        
 //
-        let db=DBHelper();
-        let data=db.workinglog.find(content: "s");
-        log(data.count);
+//        let db=DBHelper();
+//        let data=db.workinglog.find(pid: "s");
+//        log(data.count);
 
 	}
 }

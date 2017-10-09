@@ -73,7 +73,7 @@ class WorkinglogDetailController: NSViewController, NSComboBoxDataSource {
 			}
 
 			let working = WorkingLog();
-			working.content = txtContent.string!;
+			working.content = txtContent.string;
 			working.workTime = txtLength.objectValue as! Double;
 			working.workType = (puType.selectedItem?.title)!;
 			working.createTime = (dpDate.formatter as! DateFormatter).string(from: dpDate.dateValue);
@@ -98,7 +98,7 @@ class WorkinglogDetailController: NSViewController, NSComboBoxDataSource {
 
 	@IBAction func doModify(_ sender: AnyObject) {
 		if (command == "modify") {
-			working.content = txtContent.string!;
+			working.content = txtContent.string;
 			working.workTime = txtLength.objectValue as! Double;
 			working.workType = (puType.selectedItem?.title)!;
 			working.createTime = (dpDate.formatter as! DateFormatter).string(from: dpDate.dateValue);
@@ -117,7 +117,7 @@ class WorkinglogDetailController: NSViewController, NSComboBoxDataSource {
 		}
 	}
 
-	func changeProject(_ notify: Notification) {
+	@objc func changeProject(_ notify: Notification) {
 		guard let id = notify.object else { return; }
         self.selectProjectId = id as! Int64;
 	}

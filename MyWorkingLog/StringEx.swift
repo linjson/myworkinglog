@@ -22,7 +22,12 @@ extension String: CalculateTextSize {
 		if (len >= self.characters.count || len < 0) {
 			return self;
 		}
-		return self.substring(to: self.characters.index(self.startIndex, offsetBy: len));
+        
+        let range=self.index(self.startIndex,offsetBy:len);
+        let id = self[...range];
+        
+        return String(id);
+
 	}
 
 	public func isNotNull() -> Bool {
@@ -38,12 +43,12 @@ extension NSString: CalculateTextSize {
 
 		let value = self;
 		var textSize: CGSize!
-		let attributes = [NSFontAttributeName: font];
+		let attributes = [NSAttributedStringKey.font: font];
 		if size.equalTo(CGSize.zero) {
 			textSize = value.size(withAttributes: attributes)
 		} else {
-			let option = NSStringDrawingOptions.usesLineFragmentOrigin
-			let attributes = [NSFontAttributeName: font];
+			let option = NSString.DrawingOptions.usesLineFragmentOrigin
+			let attributes = [NSAttributedStringKey.font: font];
 			let stringRect = value.boundingRect(with: size, options: option, attributes: attributes, context: nil)
 			textSize = stringRect.size
 		}

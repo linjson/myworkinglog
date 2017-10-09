@@ -13,7 +13,7 @@ class Alert {
 		let alert = NSAlert()
 		alert.messageText = "ERROR:";
 		alert.informativeText = error;
-		let errorIcon = NSImage.init(named: "NSStopProgressFreestandingTemplate");
+		let errorIcon = NSImage.init(named: NSImage.Name(rawValue: "NSStopProgressFreestandingTemplate"));
 
 		alert.icon = errorIcon;
 		alert.beginSheetModal(for: window, completionHandler: { (m) -> Void in });

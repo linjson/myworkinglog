@@ -38,7 +38,7 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
         listview.delegate = self;
         listview.dataSource = self;
         
-        listview.register(forDraggedTypes: [DRAG_PROJECTITEM]);
+        listview.registerForDraggedTypes([NSPasteboard.PasteboardType(rawValue: DRAG_PROJECTITEM)]);
         
         registerNotifiction();
     }
@@ -64,12 +64,12 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: NOTIFY_DATACHANGE_PROJECT), object: nil);
     }
     
-    func refreshProjectData() {
+    @objc func refreshProjectData() {
         projectData = dbHelper.project.findAll();
         listview.reloadData();
     }
     
-    func refreshWorkingLogData(_ notify:Notification?=nil) {
+    @objc func refreshWorkingLogData(_ notify:Notification?=nil) {
         
         if(notify != nil && notify?.object != nil){
             search=notify?.object as? String;
@@ -88,7 +88,7 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
         projectData = dbHelper.project.findAll();
     }
     
-    func doTableViewRowDoubleClick() {
+    @objc func doTableViewRowDoubleClick() {
         let row = tableview.selectedRow;
         
         if (row > -1) {
@@ -104,7 +104,7 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
         }
         
         // copy
-        if ((NSEvent.modifierFlags() == NSEventModifierFlags.command) && (theEvent.keyCode == 8)) {
+        if ((NSEvent.modifierFlags == NSEvent.ModifierFlags.command) && (theEvent.keyCode == 8)) {
             let c = copySelectContent();
             self.writeToPasteboard(c) ;
             NotificationCenter.default.post(name: Notification.Name(rawValue: NOTIFY_POPALERT), object: PopAlertType.copy.rawValue);
@@ -121,10 +121,14 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
     }
     
     func writeToPasteboard(_ text: String) {
-        let pb = NSPasteboard.general()
+        
+        
+        
+        let pb = NSPasteboard.general
         pb.clearContents();
-        pb.declareTypes([NSStringPboardType], owner: self);
-        pb.setString(text, forType: NSStringPboardType);
+        
+        pb.declareTypes([NSPasteboard.PasteboardType.string], owner: self);
+        pb.setString(text, forType: NSPasteboard.PasteboardType.string);
         
     }
     
@@ -147,31 +151,31 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
         }
         
         let working = o[row];
-        if (columnId == "tId") {
-            let view = tableview.make(withIdentifier: columnId, owner: self) as! NSTableCellView;
+        if (columnId.rawValue == "tId") {
+            let view = tableview.makeView(withIdentifier: columnId, owner: self) as! NSTableCellView;
             view.textField?.objectValue = row + 1;
             return view;
-        } else if (columnId == "tContent") {
-            let view = tableview.make(withIdentifier: columnId, owner: self) as! NSTableCellView;
+        } else if (columnId.rawValue == "tContent") {
+            let view = tableview.makeView(withIdentifier: columnId, owner: self) as! NSTableCellView;
             view.textField?.objectValue = working.content;
             
             return view;
-        } else if (columnId == "tTime") {
-            let view = tableview.make(withIdentifier: columnId, owner: self) as! NSTableCellView;
+        } else if (columnId.rawValue == "tTime") {
+            let view = tableview.makeView(withIdentifier: columnId, owner: self) as! NSTableCellView;
             view.textField?.objectValue = working.createTime;
             return view;
-        } else if (columnId == "tLength") {
-            let view = tableview.make(withIdentifier: columnId, owner: self) as! NSTableCellView;
+        } else if (columnId.rawValue == "tLength") {
+            let view = tableview.makeView(withIdentifier: columnId, owner: self) as! NSTableCellView;
             view.textField?.objectValue = working.workTime;
             
             return view;
-        } else if (columnId == "tType") {
-            let view = tableview.make(withIdentifier: columnId, owner: self) as! NSTableCellView;
+        } else if (columnId.rawValue == "tType") {
+            let view = tableview.makeView(withIdentifier: columnId, owner: self) as! NSTableCellView;
             view.textField?.objectValue = working.workType;
             
             return view;
-        } else if (columnId == "tOp") {
-            let view = tableview.make(withIdentifier: columnId, owner: self) as! DeleteCellView;
+        } else if (columnId.rawValue == "tOp") {
+            let view = tableview.makeView(withIdentifier: columnId, owner: self) as! DeleteCellView;
             view.data = working;
             return view;
         }
@@ -202,7 +206,7 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
     
     func tableViewColumnDidResize(_ notification: Notification) {
         
-        colContentWidth = (tableview.tableColumn(withIdentifier: COL_CONTENT_INDEX)?.width)! - 8;
+        colContentWidth = (tableview.tableColumn(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: COL_CONTENT_INDEX))?.width)! - 8;
         tableview.noteHeightOfRows(withIndexesChanged: IndexSet.init(integersIn: NSMakeRange(0, tableview.numberOfRows).toRange()!))
     }
     
@@ -210,7 +214,7 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
     func tableView(_ tableView: NSTableView, writeRowsWith rowIndexes: IndexSet, to pboard: NSPasteboard) -> Bool {
         pboard.clearContents();
         
-        pboard.declareTypes([DRAG_PROJECTITEM], owner: self);
+        pboard.declareTypes([NSPasteboard.PasteboardType(rawValue: DRAG_PROJECTITEM)], owner: self);
         self.selectWorking = [];
         (rowIndexes as NSIndexSet).enumerate({ (a, b) -> Void in
             self.selectWorking.append(self.workingLogData[a].id);
@@ -248,11 +252,11 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
         let row: Project = item as! Project;
         
         if (row.id == -1) {
-            let a = outlineView.make(withIdentifier: "HeaderCell", owner: item) as! NSTableCellView;
+            let a = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "HeaderCell"), owner: item) as! NSTableCellView;
             a.textField?.objectValue = row.projectName;
             return a;
         }
-        let a = outlineView.make(withIdentifier: "Item", owner: item) as! NSTableCellView;
+        let a = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "Item"), owner: item) as! NSTableCellView;
         a.textField?.objectValue = row.projectName;
         return a;
     }

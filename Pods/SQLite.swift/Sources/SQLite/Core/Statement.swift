@@ -24,8 +24,12 @@
 
 #if SQLITE_SWIFT_STANDALONE
 import sqlite3
-#elseif COCOAPODS
+#elseif SQLITE_SWIFT_SQLCIPHER
+import SQLCipher
+#elseif os(Linux)
 import CSQLite
+#else
+import SQLite3
 #endif
 
 /// A single SQL statement.
@@ -198,12 +202,30 @@ extension Statement : Sequence {
 
 }
 
-extension Statement : IteratorProtocol {
+public protocol FailableIterator : IteratorProtocol {
+    func failableNext() throws -> Self.Element?
+}
 
-    public func next() -> [Binding?]? {
-        return try! step() ? Array(row) : nil
+extension FailableIterator {
+    public func next() -> Element? {
+        return try! failableNext()
     }
+}
 
+extension Array {
+    public init<I: FailableIterator>(_ failableIterator: I) throws where I.Element == Element {
+        self.init()
+        while let row = try failableIterator.failableNext() {
+            append(row)
+        }
+    }
+}
+
+extension Statement : FailableIterator {
+    public typealias Element = [Binding?]
+    public func failableNext() throws -> [Binding?]? {
+        return try step() ? Array(row) : nil
+    }
 }
 
 extension Statement : CustomStringConvertible {
@@ -242,7 +264,9 @@ public struct Cursor {
             let length = Int(sqlite3_column_bytes(handle, Int32(idx)))
             return Blob(bytes: pointer, length: length)
         } else {
-            fatalError("sqlite3_column_blob returned NULL")
+            // The return value from sqlite3_column_blob() for a zero-length BLOB is a NULL pointer.
+            // https://www.sqlite.org/c3ref/column_blob.html
+            return Blob(bytes: [])
         }
     }
 

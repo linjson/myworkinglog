@@ -169,7 +169,7 @@ class ProjectManagerViewController: NSViewController, NSOutlineViewDataSource, N
 	func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
 		let row: Project = item as! Project;
 
-		let a = outlineView.make(withIdentifier: "DataCell", owner: item) as! NSTableCellView;
+		let a = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "DataCell"), owner: item) as! NSTableCellView;
 		a.textField?.objectValue = "\(row.projectName)(\(row.workinglogCount))";
 		return a;
 	}

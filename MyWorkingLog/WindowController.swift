@@ -15,11 +15,11 @@ class WindowController: NSWindowController {
     var dataBaseWindow: NSWindowController!;
     override func windowDidLoad() {
         self.window?.titleVisibility = .hidden;
-        workinglogDetailWindow = self.storyboard!.instantiateController(withIdentifier: "WorkinglogDetailWindow") as! NSWindowController;
+        workinglogDetailWindow = self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "WorkinglogDetailWindow")) as! NSWindowController;
         
-        projectManagerWindow = self.storyboard?.instantiateController(withIdentifier: "ProjectManagerWindow") as! NSWindowController;
+        projectManagerWindow = self.storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "ProjectManagerWindow")) as! NSWindowController;
         
-        dataBaseWindow = self.storyboard?.instantiateController(withIdentifier: "DataBaseWindow") as! NSWindowController;
+        dataBaseWindow = self.storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "DataBaseWindow")) as! NSWindowController;
         
         registerNotifiction();
     }
@@ -38,7 +38,7 @@ class WindowController: NSWindowController {
         NotificationCenter.default.addObserver(self, selector: #selector(showPopAlert(_:)), name: NSNotification.Name(rawValue: NOTIFY_POPALERT), object: nil);
     }
     
-    func showPopAlert(_ notify: Notification) {
+    @objc func showPopAlert(_ notify: Notification) {
         guard let type = notify.object else {
             return ;
         }
@@ -48,7 +48,7 @@ class WindowController: NSWindowController {
         PopAlert.create(self.window, with: PopAlertType(rawValue: a)!);
     }
     
-    func openWorkinglogDetail(_ notify: Notification) {
+    @objc func openWorkinglogDetail(_ notify: Notification) {
         
         guard let working = notify.object as? WorkingLog else {
             return ;

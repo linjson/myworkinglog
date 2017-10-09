@@ -10,9 +10,9 @@ import Cocoa
 
 class PopAlertWindow: NSWindow {
 
-	override init(contentRect: NSRect, styleMask aStyle: NSWindowStyleMask, backing bufferingType: NSBackingStoreType, defer flag: Bool) {
+	override init(contentRect: NSRect, styleMask aStyle: NSWindow.StyleMask, backing bufferingType: NSWindow.BackingStoreType, defer flag: Bool) {
 		super.init(contentRect: contentRect, styleMask: aStyle, backing: bufferingType, defer: flag);
-		self.styleMask = NSBorderlessWindowMask;
+//        self.styleMask = NSBorderlessWindowMask;
 		self.isOpaque = false;
 		self.backgroundColor = NSColor.clear;
 	}
@@ -61,8 +61,8 @@ class PopAlert: NSWindowController, NSAnimationDelegate {
 		super.init(window: window);
 	}
 
-	init() {
-		self.init(windowNibName: "PopAlert");
+	convenience init() {
+		self.init(windowNibName: NSNib.Name(rawValue: "PopAlert"));
 	}
 
 	override func windowDidLoad() {
@@ -118,7 +118,7 @@ class PopAlert: NSWindowController, NSAnimationDelegate {
 	override func showWindow(_ sender: Any?) {
 
 		self.window?.alphaValue = 0;
-		iconView.image = NSImage.init(named: iconName);
+        iconView.image = NSImage.init(named: NSImage.Name(rawValue: iconName!));
 
 		super.showWindow(sender);
 		setBackground();
@@ -140,7 +140,7 @@ class PopAlert: NSWindowController, NSAnimationDelegate {
 
 	}
 
-	func dismiss(_ sender: AnyObject?) {
+	@objc func dismiss(_ sender: AnyObject?) {
 		self.window?.animator().alphaValue = 0;
 	}
 
