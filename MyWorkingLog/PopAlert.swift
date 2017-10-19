@@ -12,7 +12,7 @@ class PopAlertWindow: NSWindow {
 
 	override init(contentRect: NSRect, styleMask aStyle: NSWindow.StyleMask, backing bufferingType: NSWindow.BackingStoreType, defer flag: Bool) {
 		super.init(contentRect: contentRect, styleMask: aStyle, backing: bufferingType, defer: flag);
-//        self.styleMask = NSBorderlessWindowMask;
+//        self.styleMask = NSWindow.StyleMask.borderless;
 		self.isOpaque = false;
 		self.backgroundColor = NSColor.clear;
 	}
