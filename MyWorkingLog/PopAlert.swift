@@ -62,7 +62,7 @@ class PopAlert: NSWindowController, NSAnimationDelegate {
 	}
 
 	convenience init() {
-		self.init(windowNibName: NSNib.Name(rawValue: "PopAlert"));
+		self.init(windowNibName: NSNib.Name("PopAlert"));
 	}
 
 	override func windowDidLoad() {
@@ -118,7 +118,7 @@ class PopAlert: NSWindowController, NSAnimationDelegate {
 	override func showWindow(_ sender: Any?) {
 
 		self.window?.alphaValue = 0;
-        iconView.image = NSImage.init(named: NSImage.Name(rawValue: iconName!));
+        iconView.image = NSImage.init(named: NSImage.Name( iconName!));
 
 		super.showWindow(sender);
 		setBackground();

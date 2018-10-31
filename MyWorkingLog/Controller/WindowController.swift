@@ -15,11 +15,11 @@ class WindowController: NSWindowController {
     var dataBaseWindow: NSWindowController!;
     override func windowDidLoad() {
         self.window?.titleVisibility = .hidden;
-        workinglogDetailWindow = self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "WorkinglogDetailWindow")) as! NSWindowController;
+        workinglogDetailWindow = self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("WorkinglogDetailWindow")) as? NSWindowController;
         
-        projectManagerWindow = self.storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "ProjectManagerWindow")) as! NSWindowController;
+        projectManagerWindow = self.storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("ProjectManagerWindow")) as? NSWindowController;
         
-        dataBaseWindow = self.storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "DataBaseWindow")) as! NSWindowController;
+        dataBaseWindow = self.storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("DataBaseWindow")) as? NSWindowController;
         
         registerNotifiction();
     }

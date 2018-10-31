@@ -207,7 +207,7 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
     func tableViewColumnDidResize(_ notification: Notification) {
         
         colContentWidth = (tableview.tableColumn(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: COL_CONTENT_INDEX))?.width)! - 8;
-        tableview.noteHeightOfRows(withIndexesChanged: IndexSet.init(integersIn: NSMakeRange(0, tableview.numberOfRows).toRange()!))
+        tableview.noteHeightOfRows(withIndexesChanged: IndexSet.init(integersIn: Range.init(NSMakeRange(0, tableview.numberOfRows))!))
     }
     
     /// 支持drag

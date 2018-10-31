@@ -156,7 +156,7 @@ open class WorkingLogTable {
             
             if((c) != nil) {
                 let cc=c!;
-            if( cc.characters.count != 0){
+            if( cc.count != 0){
                 table = table.filter(self.content.like("%\(cc)%"));
             }
             }

@@ -8,7 +8,3 @@ pod 'SQLite.swift', '~> 0.11.4'
 target :MyWorkingLog do
   # pod 'Kiwi'
 end
-
-target :MyWorkingLogTests do
-    # pod 'Kiwi'
-end

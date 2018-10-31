@@ -19,7 +19,7 @@ class Properties {
 		}
 		get {
 
-			let defaultPath = Bundle.main.path(forResource: "data", ofType: "db")!
+            let defaultPath = Bundle.main.path(forResource: "data", ofType: "db")!
 			guard let path = table.value(forKey: "dbPath") else {
 				return defaultPath;
 			}

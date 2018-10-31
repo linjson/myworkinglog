@@ -71,10 +71,9 @@ class WorkinglogDetailController: NSViewController, NSComboBoxDataSource {
 			if (!validateData()) {
 				return ;
 			}
-
 			let working = WorkingLog();
 			working.content = txtContent.string;
-			working.workTime = txtLength.objectValue as! Double;
+            working.workTime = txtLength.objectValue==nil ? 0:(txtLength.objectValue as! Double);
 			working.workType = (puType.selectedItem?.title)!;
 			working.createTime = (dpDate.formatter as! DateFormatter).string(from: dpDate.dateValue);
 			working.pid = projectData[puProject.indexOfSelectedItem].id;
@@ -119,7 +118,7 @@ class WorkinglogDetailController: NSViewController, NSComboBoxDataSource {
 
 	@objc func changeProject(_ notify: Notification) {
 		guard let id = notify.object else { return; }
-        self.selectProjectId = id as! Int64;
+        self.selectProjectId = id as? Int64;
 	}
 
 	func selectProject(_ id: Int64) {
