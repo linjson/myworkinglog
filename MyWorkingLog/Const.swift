@@ -14,15 +14,15 @@ let NOTIFY_EDITWORKINGLOG = "NOTIFY_EDITWORKINGLOG";
 let NOTIFY_POPALERT = "NOTIFY_POPALERT";
 let NOTIFY_DATACHANGE_CHANGEPROJECTSELECT = "NOTIFY_DATACHANGE_CHANGEPROJECTSELECT";
 let DRAG_PROJECTITEM = "DGAG_PROJECTITEM";
-
+let SelectYearDefault="年份";
 let ERROR = 0;
 
 var dbHelper = DBHelper();
 
 func log(_ items: Any...) {
-	let debug = true;
-	if (debug) {
-		print("==>", items);
-	}
+    let debug = true;
+    if (debug) {
+        print("==>", items);
+    }
 }
 

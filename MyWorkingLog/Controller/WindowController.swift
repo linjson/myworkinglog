@@ -10,11 +10,15 @@ import Foundation
 import Cocoa
 class WindowController: NSWindowController {
     
+    @IBOutlet weak var ppSelectYear: NSPopUpButton!
     var workinglogDetailWindow: NSWindowController!;
     var projectManagerWindow: NSWindowController!;
     var dataBaseWindow: NSWindowController!;
     override func windowDidLoad() {
         self.window?.titleVisibility = .hidden;
+        
+        initSelectYearData();
+        
         workinglogDetailWindow = self.storyboard!.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("WorkinglogDetailWindow")) as? NSWindowController;
         
         projectManagerWindow = self.storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("ProjectManagerWindow")) as? NSWindowController;
@@ -26,6 +30,18 @@ class WindowController: NSWindowController {
     
     override func close() {
         unregisterNotifiction();
+    }
+    
+    func initSelectYearData(){
+        let startYear=2015;
+        let endYear=Calendar.current.component(Calendar.Component.year, from: Date.init());
+        let count=endYear-startYear;
+        ppSelectYear.addItem(withTitle: SelectYearDefault);
+        for i in 0...count{
+            ppSelectYear.addItem(withTitle: String(endYear-i));
+        }
+        
+        
     }
     
     func unregisterNotifiction() {
@@ -84,9 +100,12 @@ class WindowController: NSWindowController {
     
     @IBAction func searchContent(_ sender: Any) {
         let field=sender as! NSSearchField;
+        NotificationCenter.default.post(name:Notification.Name(rawValue: NOTIFY_DATACHANGE_WORKINGLOG), object: SearchData(searchWord: field.stringValue));
         
-        NotificationCenter.default.post(name:Notification.Name(rawValue: NOTIFY_DATACHANGE_WORKINGLOG), object: field.stringValue);
-        
+    }
+    @IBAction func doSelectYear(_ sender: Any) {
+        let year=ppSelectYear.selectedItem?.title ?? SelectYearDefault;
+        NotificationCenter.default.post(name:Notification.Name(rawValue: NOTIFY_DATACHANGE_WORKINGLOG), object: SearchData(selectYear: year));
     }
     var i = 0;
     @IBAction func test(_ sender: AnyObject) {
@@ -94,4 +113,10 @@ class WindowController: NSWindowController {
         PopAlert.create(self.window, with: i % 2 == 0 ? PopAlertType.error : PopAlertType.info);
         
     }
+    
+    func test2() -> Any{
+        return (name:"b",age:20)
+    }
+    
+    
 }

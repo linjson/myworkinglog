@@ -110,72 +110,79 @@ open class WorkingLogTable {
         return ERROR;
     }
     
+    private func convertWorkingLogList(_ table:Table)->[WorkingLog]{
+        var list: [WorkingLog] = [];
+        do {
+            try db.prepare(table.order(self.createTime.desc)).forEach { r in
+                let w = WorkingLog();
+                w.id = r[id];
+                w.content = r[content];
+                w.pid = r[pid];
+                w.createTime = r[createTime].subString(10);
+                w.workTime = r[workTime];
+                w.workType = r[workType];
+                list.append(w);
+            };
+        }catch let e{
+            log(e);
+        }
+        
+        return list;
+        
+    }
+    
     func find() -> [WorkingLog] {
         return find(pid:-999);
     }
     
     func find(pid proid: Int64) -> [WorkingLog] {
         
-        var list: [WorkingLog] = [];
         
-        do {
-            var table = self.table;
-            if (proid != -999) {
-                table = table.filter(self.pid == proid)
-            }
-            
-            try db.prepare(table.order(self.createTime.desc)).forEach { r in
-                let w = WorkingLog();
-                w.id = r[id];
-                w.content = r[content];
-                w.pid = r[pid];
-                w.createTime = r[createTime].subString(10);
-                w.workTime = r[workTime];
-                w.workType = r[workType];
-                list.append(w);
-            };
-        } catch let e {
-            log(e);
+        var table = self.table;
+        if (proid != -999) {
+            table = table.filter(self.pid == proid)
         }
         
-        return list;
+        return convertWorkingLogList(table);
+    }
+    
+    
+    
+    
+    func find(id proid:Int64?,selectYear year:String) -> [WorkingLog] {
+        
+        var table = self.table;
+        
+        if(proid != nil){
+            let a=proid!;
+            if(a>=0){
+                table=table.filter(self.pid==a);
+            }
+        }
+        
+        table = table.filter(self.createTime.like("\(year)%"));
+        return convertWorkingLogList(table);
     }
     
     func find(id proid:Int64?,content c:String?)->[WorkingLog]{
-        var list: [WorkingLog] = [];
-        do {
-            var table = self.table;
-            
-            if(proid != nil){
-                let a=proid!;
-                if(a>=0){
-                    table=table.filter(self.pid==a);
-                }
+        var table = self.table;
+        
+        if(proid != nil){
+            let a=proid!;
+            if(a>=0){
+                table=table.filter(self.pid==a);
             }
-            
-            
-            if((c) != nil) {
-                let cc=c!;
+        }
+        
+        
+        if((c) != nil) {
+            let cc=c!;
             if( cc.count != 0){
                 table = table.filter(self.content.like("%\(cc)%"));
             }
-            }
-            
-            
-            try db.prepare(table.order(self.createTime.desc)).forEach { r in
-                let w = WorkingLog();
-                w.id = r[id];
-                w.content = r[content];
-                w.pid = r[pid];
-                w.createTime = r[createTime].subString(10);
-                w.workTime = r[workTime];
-                w.workType = r[workType];
-                list.append(w);
-            };
-        } catch let e {
-            log(e);
         }
         
-        return list;
+        
+        return convertWorkingLogList(table);
     }
 }

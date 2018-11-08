@@ -71,13 +71,24 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
     
     @objc func refreshWorkingLogData(_ notify:Notification?=nil) {
         
+        var search:SearchData?;
         if(notify != nil && notify?.object != nil){
-            search=notify?.object as? String;
+            search=notify?.object as? (SearchData);
         }
         
-        workingLogData=dbHelper.workinglog.find(id:self.selectPid,content: search);
+        guard let s=search else {
+            return;
+        }
         
-        tableview.reloadData();
+        if(!(s.searchWord.count==0)){
+            workingLogData=dbHelper.workinglog.find(id:self.selectPid,content: s.searchWord);
+            tableview.reloadData();
+        }else if(!(s.selectYear==SelectYearDefault)){
+            workingLogData=dbHelper.workinglog.find(id:self.selectPid, selectYear: s.selectYear);
+            tableview.reloadData();
+        }
+        //
+        //        tableview.reloadData();
         
     }
     

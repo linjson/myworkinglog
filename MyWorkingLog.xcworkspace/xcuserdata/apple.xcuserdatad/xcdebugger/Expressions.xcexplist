@@ -3,17 +3,6 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "Properties.dbPath.getter:Properties.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "Bundle.main.path(forResource: &quot;data&quot;, ofType: &quot;db&quot;)">
-            </PersistentString>
-            <PersistentString
-               value = "Bundle.main">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "WorkinglogDetailController.doAdd(_:):WorkinglogDetailController.swift">
          <PersistentStrings>
             <PersistentString
@@ -22,10 +11,29 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "ViewController.refreshWorkingLogData(_:):ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "notify?.object">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "Properties.init():Properties.swift">
          <PersistentStrings>
             <PersistentString
                value = "path">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Properties.dbPath.getter:Properties.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Bundle.main.path(forResource: &quot;data&quot;, ofType: &quot;db&quot;)">
+            </PersistentString>
+            <PersistentString
+               value = "Bundle.main">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

@@ -30,6 +30,7 @@
 		182C1EB62189822D00F37E49 /* properties.plist in Resources */ = {isa = PBXBuildFile; fileRef = 182C1EB52189822D00F37E49 /* properties.plist */; };
 		182C1EB82189833200F37E49 /* data.db in Resources */ = {isa = PBXBuildFile; fileRef = 182C1EB72189833200F37E49 /* data.db */; };
 		182C1EBB218990C300F37E49 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182C1EBA218990C300F37E49 /* ViewController.swift */; };
+		18601B8E2194029D0076E02F /* SearchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18601B8D2194029D0076E02F /* SearchData.swift */; };
 		43A36CFFF512F47B389755AB /* Pods_MyWorkingLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CD986E4A5C5500B82610CCA /* Pods_MyWorkingLog.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,7 @@
 		182C1EB52189822D00F37E49 /* properties.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = properties.plist; sourceTree = "<group>"; };
 		182C1EB72189833200F37E49 /* data.db */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = data.db; sourceTree = "<group>"; };
 		182C1EBA218990C300F37E49 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		18601B8D2194029D0076E02F /* SearchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchData.swift; sourceTree = "<group>"; };
 		18F88540C29FC6457BFD9BEC /* Pods-MyWorkingLog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyWorkingLog.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyWorkingLog/Pods-MyWorkingLog.release.xcconfig"; sourceTree = "<group>"; };
 		DEA1BD73F09A21DE8AE66077 /* Pods-MyWorkingLog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyWorkingLog.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyWorkingLog/Pods-MyWorkingLog.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -115,6 +117,7 @@
 				182C1E7E21897BA900F37E49 /* Info.plist */,
 				182C1E7F21897BA900F37E49 /* MyWorkingLog.entitlements */,
 				182C1EB52189822D00F37E49 /* properties.plist */,
+				18601B8D2194029D0076E02F /* SearchData.swift */,
 			);
 			path = MyWorkingLog;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				182C1E9821897EF400F37E49 /* DeleteCellView.swift in Sources */,
 				182C1EBB218990C300F37E49 /* ViewController.swift in Sources */,
 				182C1EB321897F0400F37E49 /* NSImageEx.swift in Sources */,
+				18601B8E2194029D0076E02F /* SearchData.swift in Sources */,
 				182C1EB121897F0400F37E49 /* WorkingLogTable.swift in Sources */,
 				182C1EAB21897F0400F37E49 /* StringEx.swift in Sources */,
 				182C1E9521897EF400F37E49 /* Const.swift in Sources */,
