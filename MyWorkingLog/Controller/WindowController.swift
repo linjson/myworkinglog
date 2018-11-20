@@ -15,6 +15,9 @@ class WindowController: NSWindowController {
     var projectManagerWindow: NSWindowController!;
     var dataBaseWindow: NSWindowController!;
     override func windowDidLoad() {
+        let appdelegate=NSApp.delegate as! AppDelegate;
+        appdelegate.mainWindow=self;
+        
         self.window?.titleVisibility = .hidden;
         
         initSelectYearData();
