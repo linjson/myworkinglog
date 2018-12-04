@@ -139,7 +139,7 @@ open class WorkingLogTable {
         
         
         var table = self.table;
-        if (proid != -999) {
+        if (proid != -1) {
             table = table.filter(self.pid == proid)
         }
         
@@ -159,8 +159,9 @@ open class WorkingLogTable {
                 table=table.filter(self.pid==a);
             }
         }
-        
-        table = table.filter(self.createTime.like("\(year)%"));
+        if(!(year == SelectYearDefault)){
+            table = table.filter(self.createTime.like("\(year)%"));
+        }
         return convertWorkingLogList(table);
     }
     

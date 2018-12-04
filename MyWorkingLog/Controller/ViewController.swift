@@ -20,7 +20,8 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
     var selectPid: Int64!;
     var workingLogData: [WorkingLog]!;
     var selectWorking: [Int64]!;
-    var search:String?;
+    var selectedYear:String=SelectYearDefault;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -77,18 +78,21 @@ class ViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSour
         }
         
         guard let s=search else {
+            workingLogData=dbHelper.workinglog.find(id:self.selectPid,selectYear:self.selectedYear);
+            tableview.reloadData();
             return;
         }
+        
+        self.selectedYear=s.selectYear;
+        
         
         if(!(s.searchWord.count==0)){
             workingLogData=dbHelper.workinglog.find(id:self.selectPid,content: s.searchWord);
             tableview.reloadData();
-        }else if(!(s.selectYear==SelectYearDefault)){
+        }else {
             workingLogData=dbHelper.workinglog.find(id:self.selectPid, selectYear: s.selectYear);
             tableview.reloadData();
         }
-        //
-        //        tableview.reloadData();
         
     }
     
