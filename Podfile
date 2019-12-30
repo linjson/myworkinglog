@@ -1,10 +1,9 @@
 source 'https://github.com/CocoaPods/Specs.git'
-platform :osx, "10.11"
+platform :osx, "10.14"
 
 use_frameworks!
 
-pod 'SQLite.swift', '~> 0.11.4'
-
+pod 'SQLite.swift', '~>0.12.2'
 target :MyWorkingLog do
   # pod 'Kiwi'
 end

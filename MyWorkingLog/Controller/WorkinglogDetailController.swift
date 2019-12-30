@@ -122,7 +122,7 @@ class WorkinglogDetailController: NSViewController, NSComboBoxDataSource {
 	}
 
 	func selectProject(_ id: Int64) {
-		let i = projectData.index(where: { p -> Bool in p.id == id });
+        let i = projectData.firstIndex(where: { p -> Bool in p.id == id });
 		var index = 0;
 		if i != nil {
 			index = i!;
