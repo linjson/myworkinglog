@@ -17,6 +17,8 @@ class WorkinglogDetailController: NSViewController, NSComboBoxDataSource {
 	@IBOutlet weak var dpDate: NSDatePicker!
 	@IBOutlet weak var txtLength: NSTextField!
 	@IBOutlet var txtContent: NSTextView!
+    @IBOutlet var dpDateText: NSDatePicker!
+    
 	var isEdit = false;
 	var projectData: [Project]!;
 	var working: WorkingLog!;
@@ -143,14 +145,39 @@ class WorkinglogDetailController: NSViewController, NSComboBoxDataSource {
 	}
 
 	func resetField() {
-
-		dpDate.dateValue = Date.init();
+        let now=Date.init();
+        dpDate.dateValue = now;
+        dpDateText.datePickerStyle=NSDatePicker.Style.textFieldAndStepper;
+        dpDateText.dateValue=now;
 		txtLength.objectValue = 7.5;
 		puType.selectItem(at: 0);
 		txtContent.string = "";
 		working = nil;
-
+        let actionType=NSEvent.EventTypeMask.mouseExited;
+        dpDate.sendAction(on: actionType);
+        dpDate.action=#selector(datePickerChange);
+        
+        dpDateText.action=#selector(datePickerChangeFromDatePickText);
+        
 	}
+    
+    func getDateFormat() -> DateFormatter{
+        return dpDate.formatter as! DateFormatter
+    }
+    
+    @objc func datePickerChangeFromDatePickText(picker:NSDatePicker){
+        if(picker.stringValue != dpDate.stringValue){
+            dpDate.dateValue=dpDateText.dateValue;
+        }
+    }
+    
+    @objc func datePickerChange(picker:NSDatePicker){
+        
+        if(picker.stringValue != dpDateText.stringValue){
+            dpDateText.dateValue=dpDate.dateValue;
+        }
+        
+    }
 
 	func bindData() {
 		selectProject(working.pid);
